@@ -7,6 +7,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export async function clientLoader({}: Route.ClientLoaderArgs) {
+  const respon = await fetch(`http://localhost:3000/products`);
+  const products = await respon.json();
+  console.log(products);
+  return products;
+}
+
 export default function Home() {
   return (
     <div>
