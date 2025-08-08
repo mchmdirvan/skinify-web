@@ -14,10 +14,16 @@ export async function clientLoader({}: Route.ClientLoaderArgs) {
   return products;
 }
 
-export default function Home() {
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const products = loaderData;
   return (
     <div>
       <h1>Skinify</h1>
+      <ul>
+        {products.map((product: any) => {
+          return <li key={product.id}>{product.name}</li>;
+        })}
+      </ul>
     </div>
   );
 }
