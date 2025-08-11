@@ -8,7 +8,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader({}: Route.ClientLoaderArgs) {
-  const respon = await fetch(`http://localhost:3000/products`);
+  const respon = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/products`
+  );
   const products = await respon.json();
   console.log({ products });
   return products;
