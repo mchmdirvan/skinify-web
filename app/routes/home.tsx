@@ -2,9 +2,9 @@ import type { Route } from "./+types/home";
 
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 
-import Iphone from "../../public/iPhone-16-Pro-Body.png";
-import Samsung from "../../public/Galaxy-S25-Ultra-Body.png";
-import Xiaomi from "../../public/Xiaomi-15-Ultra-Body.png";
+import Iphone from "/iPhone-16-Pro-Body.png?url";
+import Samsung from "/Galaxy-S25-Ultra-Body.png?url";
+import Xiaomi from "/Xiaomi-15-Ultra-Body.png?url";
 import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
