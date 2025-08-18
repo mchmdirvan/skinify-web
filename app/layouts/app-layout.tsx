@@ -12,7 +12,7 @@ import {
 
 export default function AppLayout() {
   return (
-    <main className="bg-neutral-900">
+    <main className="flex min-h-[100vh] flex-col justify-between bg-neutral-900">
       <header>
         <NavigationMenu
           viewport={false}
@@ -128,8 +128,8 @@ export default function AppLayout() {
         <Outlet />
       </main>
 
-      <footer>
-        <p>&copy; {new Date().getFullYear()} Amazing Safari</p>
+      <footer className="mx-auto py-2 text-xs text-white">
+        <p>&copy; {new Date().getFullYear()} Skinify</p>
       </footer>
     </main>
   );
