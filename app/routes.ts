@@ -5,4 +5,9 @@ export default [
     route("/", "routes/home.tsx"),
     route("products/iphone", "routes/iphone.tsx"),
   ]),
+
+  layout("./layouts/auth-layout.tsx", [
+    route("login", "routes/login.tsx"),
+    // ...
+  ]),
 ] satisfies RouteConfig;
