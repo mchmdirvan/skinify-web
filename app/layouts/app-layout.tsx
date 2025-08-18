@@ -24,7 +24,7 @@ export default function AppLayout() {
                 asChild
                 className="text-2xl font-semibold text-white hover:bg-neutral-800 hover:text-white"
               >
-                <Link to="/docs">Skinify</Link>
+                <Link to="/">Skinify</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
