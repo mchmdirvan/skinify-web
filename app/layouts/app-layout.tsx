@@ -86,7 +86,7 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800 hover:text-white"
               >
-                <Link to="/docs">Sign In</Link>
+                <Link to="/login">Sign In</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
