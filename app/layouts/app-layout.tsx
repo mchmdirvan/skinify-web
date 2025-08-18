@@ -1,12 +1,5 @@
-import {
-  CircleCheckIcon,
-  CircleHelpIcon,
-  CircleIcon,
-  SearchIcon,
-  ShoppingCartIcon,
-} from "lucide-react";
+import { SearchIcon, ShoppingCartIcon } from "lucide-react";
 import { Link, Outlet } from "react-router";
-import { Fragment } from "react/jsx-runtime";
 
 import {
   NavigationMenu,
@@ -15,23 +8,21 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "~/components/ui/navigation-menu";
 
 export default function AppLayout() {
   return (
-    <Fragment>
+    <main className="bg-neutral-900">
       <header>
         <NavigationMenu
           viewport={false}
-          className="flex min-w-full justify-between bg-blue-200 px-40 py-2"
+          className="flex min-w-full justify-between px-40 py-2"
         >
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className="font-semibold text-white hover:bg-neutral-800 hover:text-white"
               >
                 <Link to="/docs">Skinify</Link>
               </NavigationMenuLink>
@@ -40,10 +31,12 @@ export default function AppLayout() {
 
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Devices</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-white">
+                Devices
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[200px] gap-4">
-                  <li>
+                  <li className="">
                     <NavigationMenuLink asChild>
                       <Link to="#">iPhone</Link>
                     </NavigationMenuLink>
@@ -62,7 +55,9 @@ export default function AppLayout() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Specials</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-white">
+                Specials
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[200px] gap-4">
                   <li>
@@ -89,7 +84,7 @@ export default function AppLayout() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className="text-white hover:bg-neutral-800 hover:text-white"
               >
                 <Link to="/docs">Sign In</Link>
               </NavigationMenuLink>
@@ -98,7 +93,7 @@ export default function AppLayout() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className="text-white hover:bg-neutral-800 hover:text-white"
               >
                 <Link to="/docs">Sign Up</Link>
               </NavigationMenuLink>
@@ -107,7 +102,7 @@ export default function AppLayout() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className="text-white hover:bg-neutral-800 hover:text-white"
               >
                 <Link to="/docs">
                   <ShoppingCartIcon />
@@ -118,7 +113,7 @@ export default function AppLayout() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className={navigationMenuTriggerStyle()}
+                className="text-white hover:bg-neutral-800 hover:text-white"
               >
                 <Link to="/docs">
                   <SearchIcon />
@@ -136,6 +131,6 @@ export default function AppLayout() {
       <footer>
         <p>&copy; {new Date().getFullYear()} Amazing Safari</p>
       </footer>
-    </Fragment>
+    </main>
   );
 }
