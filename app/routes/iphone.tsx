@@ -25,46 +25,25 @@ export async function clientLoader({}: Route.ClientLoaderArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   const products = loaderData;
 
-  const cards = [
-    {
-      name: "iPhone",
-      image: Iphone,
-    },
-    {
-      name: "Samsung",
-      image: Samsung,
-    },
-    {
-      name: "Xiaomi",
-      image: Xiaomi,
-    },
-  ];
-
   return (
     <div className="flex justify-between px-40 py-10">
-      <h2 className="text-5xl font-bold text-white">Shop</h2>
+      <h2 className="text-5xl font-bold text-white">iPhone skins</h2>
 
       <div className="min-w-2xl space-y-10">
-        {cards.map((card) => (
+        {products.map((product) => (
           <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
             <CardHeader className="flex justify-between">
               <div className="flex h-80 flex-col justify-between">
                 <CardTitle className="text-3xl text-white">
-                  {card.name}
+                  {product.name}
                 </CardTitle>
                 <p className="text-white">Premium Skins</p>
               </div>
-              <img src={card.image} className="w-[300px]" />
+              <img src={product.imageUrl} className="w-[300px]" />
             </CardHeader>
           </Card>
         ))}
       </div>
-
-      {/* <ul>
-        {products.map((product: any) => {
-          return <li key={product.id}>{product.name}</li>;
-        })}
-      </ul> */}
     </div>
   );
 }
