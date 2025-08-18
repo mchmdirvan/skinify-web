@@ -24,40 +24,40 @@ export async function clientLoader({}: Route.ClientLoaderArgs) {
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const products = loaderData;
+
+  const cards = [
+    {
+      name: "iPhone",
+      image: Iphone,
+    },
+    {
+      name: "samsung",
+      image: Samsung,
+    },
+    {
+      name: "Xiaomi",
+      image: Xiaomi,
+    },
+  ];
+
   return (
     <div className="flex justify-between px-40 py-10">
       <h2 className="text-5xl font-bold text-white">Shop</h2>
 
       <div className="min-w-2xl space-y-10">
-        <Card className="w-full max-w-2xl overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
-          <CardHeader className="flex justify-between">
-            <div className="flex min-h-full flex-col justify-between">
-              <CardTitle className="text-3xl text-white">iPhone</CardTitle>
-              <p className="text-white">Premium Skins</p>
-            </div>
-            <img src={Iphone} className="w-[300px]" />
-          </CardHeader>
-        </Card>
-
-        <Card className="w-full max-w-2xl overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
-          <CardHeader className="flex justify-between">
-            <div className="flex min-h-full flex-col justify-between">
-              <CardTitle className="text-3xl text-white">Samsung</CardTitle>
-              <p className="text-white">Premium Skins</p>
-            </div>
-            <img src={Samsung} className="w-[300px]" />
-          </CardHeader>
-        </Card>
-
-        <Card className="w-full max-w-2xl overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
-          <CardHeader className="flex justify-between">
-            <div className="flex min-h-full flex-col justify-between">
-              <CardTitle className="text-3xl text-white">Xiaomi</CardTitle>
-              <p className="text-white">Premium Skins</p>
-            </div>
-            <img src={Xiaomi} className="w-[300px]" />
-          </CardHeader>
-        </Card>
+        {cards.map((card) => (
+          <Card className="w-full max-w-2xl overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+            <CardHeader className="flex justify-between">
+              <div className="flex h-80 flex-col justify-between">
+                <CardTitle className="text-3xl text-white">
+                  {card.name}
+                </CardTitle>
+                <p className="text-white">Premium Skins</p>
+              </div>
+              <img src={card.image} className="w-[300px]" />
+            </CardHeader>
+          </Card>
+        ))}
       </div>
 
       {/* <ul>
