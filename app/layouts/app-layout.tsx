@@ -12,7 +12,7 @@ import {
 
 export default function AppLayout() {
   return (
-    <main className="flex min-h-[100vh] flex-col justify-between bg-neutral-900">
+    <main className="flex min-h-[100vh] flex-col bg-neutral-900">
       <header>
         <NavigationMenu
           viewport={false}
@@ -124,7 +124,7 @@ export default function AppLayout() {
         </NavigationMenu>
       </header>
 
-      <main>
+      <main className="flex-1">
         <Outlet />
       </main>
 
