@@ -31,7 +31,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       image: Iphone,
     },
     {
-      name: "samsung",
+      name: "Samsung",
       image: Samsung,
     },
     {
