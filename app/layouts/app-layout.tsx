@@ -22,7 +22,7 @@ export default function AppLayout() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className="font-semibold text-white hover:bg-neutral-800 hover:text-white"
+                className="text-2xl font-semibold text-white hover:bg-neutral-800 hover:text-white"
               >
                 <Link to="/docs">Skinify</Link>
               </NavigationMenuLink>
