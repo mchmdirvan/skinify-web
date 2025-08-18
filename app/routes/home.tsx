@@ -1,11 +1,11 @@
 import type { Route } from "./+types/home";
+import { Link } from "react-router";
 
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 
-import Iphone from "/iPhone-16-Pro-Body.png?url";
 import Samsung from "/Galaxy-S25-Ultra-Body.png?url";
 import Xiaomi from "/Xiaomi-15-Ultra-Body.png?url";
-import { Link } from "react-router";
+import Iphone from "/iPhone-16-Pro-Body.png?url";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,18 +14,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function clientLoader({}: Route.ClientLoaderArgs) {
-  const respon = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/products`,
-  );
-  const products = await respon.json();
-
-  return products;
-}
-
-export default function Home({ loaderData }: Route.ComponentProps) {
-  const products = loaderData;
-
+export default function Home() {
   const cards = [
     {
       name: "iPhone",
@@ -62,12 +51,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           </Link>
         ))}
       </div>
-
-      {/* <ul>
-        {products.map((product: any) => {
-          return <li key={product.id}>{product.name}</li>;
-        })}
-      </ul> */}
     </div>
   );
 }

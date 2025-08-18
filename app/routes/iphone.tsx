@@ -2,14 +2,10 @@ import type { Route } from "./+types/home";
 
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 
-import Iphone from "../../public/iPhone-16-Pro-Body.png";
-import Samsung from "../../public/Galaxy-S25-Ultra-Body.png";
-import Xiaomi from "../../public/Xiaomi-15-Ultra-Body.png";
-
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Skinify" },
-    { name: "description", content: "Premium mobile phone skin" },
+    { title: "Skinify - iPhone" },
+    { name: "description", content: "iPhone Premium mobile phone skin" },
   ];
 }
 
