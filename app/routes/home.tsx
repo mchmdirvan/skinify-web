@@ -46,7 +46,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
       <div className="min-w-2xl space-y-10">
         {cards.map((card) => (
-          <Card className="w-full max-w-2xl overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+          <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
             <CardHeader className="flex justify-between">
               <div className="flex h-80 flex-col justify-between">
                 <CardTitle className="text-3xl text-white">
