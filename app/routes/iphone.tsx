@@ -30,7 +30,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <h2 className="text-5xl font-bold text-white">iPhone skins</h2>
 
       <div className="min-w-2xl space-y-10">
-        {products.map((product) => (
+        {products.map((product: any) => (
           <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
             <CardHeader className="flex justify-between">
               <div className="flex h-80 flex-col justify-between">
