@@ -16,7 +16,6 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     `${import.meta.env.VITE_BACKEND_API_URL}/model/${params.slug}`,
   );
   const products: ModelType = await respon.json();
-  console.log(products);
 
   return products;
 }
@@ -26,7 +25,7 @@ export default function Product({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="flex justify-between px-40 py-10">
-      <h2 className="text-5xl font-bold text-white">iPhone skins</h2>
+      <h2 className="text-5xl font-bold text-white">{products.name} skins</h2>
 
       <div className="min-w-2xl space-y-10">
         {products.products.map((product) => (

@@ -16,6 +16,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     `${import.meta.env.VITE_BACKEND_API_URL}/brands/${params.slug}`,
   );
   const models: BrandType = await respon.json();
+  console.log(models);
 
   return models;
 }
@@ -25,7 +26,7 @@ export default function Model({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="flex justify-between px-40 py-10">
-      <h2 className="text-5xl font-bold text-white">iPhone skins</h2>
+      <h2 className="text-5xl font-bold text-white">{models.name} skins</h2>
 
       <div className="flex min-w-2xl flex-col gap-8">
         {models.models.map((model) => (
