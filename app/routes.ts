@@ -4,6 +4,7 @@ export default [
   layout("./layouts/app-layout.tsx", [
     route("/", "routes/home.tsx"),
     route("brand/:slug", "routes/model.tsx"),
+    route("model/:slug", "routes/product.tsx"),
   ]),
 
   layout("./layouts/auth-layout.tsx", [
