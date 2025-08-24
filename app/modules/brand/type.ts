@@ -5,4 +5,5 @@ export type BrandType = {
   imageUrl: string;
   createdAt: string;
   updatedAt: string;
+  models: [];
 };
