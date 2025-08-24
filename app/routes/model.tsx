@@ -15,7 +15,6 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     `${import.meta.env.VITE_BACKEND_API_URL}/brands/${params.slug}`,
   );
   const models: BrandType = await respon.json();
-  console.log(models);
 
   return models;
 }
