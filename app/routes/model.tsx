@@ -15,6 +15,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     `${import.meta.env.VITE_BACKEND_API_URL}/brands/${params.slug}`,
   );
   const models: BrandType = await respon.json();
+  console.log(models);
 
   return models;
 }
@@ -27,7 +28,7 @@ export default function Model({ loaderData }: Route.ComponentProps) {
       <h2 className="text-5xl font-bold text-white">iPhone skins</h2>
 
       <div className="min-w-2xl space-y-10">
-        {models.models.map((model: any) => (
+        {models.models.map((model) => (
           <Card
             key={model.id}
             className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white"
