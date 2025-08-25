@@ -20,7 +20,7 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 export default function DetailProduct({ loaderData }: Route.ComponentProps) {
   const product = loaderData;
   const number = product.price;
-  const formatNumber = new Intl.NumberFormat("de-DE").format(number);
+  const formatNumber = new Intl.NumberFormat("id-ID").format(number);
 
   return (
     <div className="flex justify-between px-40 py-10">
