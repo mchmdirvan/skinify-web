@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   const respon = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/model/${params.slug}`,
+    `${import.meta.env.VITE_BACKEND_API_URL}/models/${params.slug}`,
   );
   const products: ModelType = await respon.json();
 
