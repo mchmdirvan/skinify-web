@@ -1,9 +1,8 @@
-import type { BrandType } from "~/modules/brand/type";
 import type { Route } from "./+types/product";
+import { Link } from "react-router";
 
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 import type { ModelType } from "~/modules/model/type";
-import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
