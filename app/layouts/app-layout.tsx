@@ -38,13 +38,13 @@ export default function AppLayout() {
                 <ul className="grid w-[200px] gap-4">
                   <li className="">
                     <NavigationMenuLink asChild>
-                      <Link to="/brand/iphone">iPhone</Link>
+                      <Link to="/iphone">iPhone</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/brand/samsung">Samsung</Link>
+                      <Link to="/samsung">Samsung</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/brand/xiaomi">Xiaomi</Link>
+                      <Link to="/xiaomi">Xiaomi</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link to="/">See All</Link>

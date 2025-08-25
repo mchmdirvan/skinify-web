@@ -1,5 +1,5 @@
 import type { ProductType } from "~/modules/products/type";
-import type { Route } from "./+types/detail-product";
+import type { Route } from "./+types/product-slug";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,15 +9,15 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-  const respon = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/products/${params.slug}`,
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/products/${params.productSlug}`,
   );
-  const product: ProductType = await respon.json();
+  const product: ProductType = await response.json();
 
   return product;
 }
 
-export default function DetailProduct({ loaderData }: Route.ComponentProps) {
+export default function ProductSlugRoute({ loaderData }: Route.ComponentProps) {
   const product = loaderData;
   const number = product.price;
   const formatNumber = new Intl.NumberFormat("id-ID").format(number);
