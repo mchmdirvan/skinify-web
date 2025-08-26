@@ -1,4 +1,4 @@
-import type { Route } from "./+types/model";
+import type { Route } from "./+types/brand-slug";
 import { Link } from "react-router";
 
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
@@ -12,17 +12,16 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-  const respon = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/brands/${params.slug}`,
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/brands/${params.brandSlug}`,
   );
-  const models: BrandType = await respon.json();
-  console.log(models);
+  const models: BrandType = await response.json();
 
-  return models;
+  return { params, models };
 }
 
-export default function Model({ loaderData }: Route.ComponentProps) {
-  const models = loaderData;
+export default function BrandSlugRoute({ loaderData }: Route.ComponentProps) {
+  const { params, models } = loaderData;
 
   return (
     <div className="flex justify-between px-40 py-10">
@@ -30,7 +29,7 @@ export default function Model({ loaderData }: Route.ComponentProps) {
 
       <div className="flex min-w-2xl flex-col gap-8">
         {models.models.map((model) => (
-          <Link key={model.id} to={`/model/${model.slug}`}>
+          <Link key={model.id} to={`/${params.brandSlug}/${model.slug}`}>
             <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
               <CardHeader className="flex justify-between">
                 <div className="flex h-80 flex-col justify-between">

@@ -12,8 +12,10 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader() {
-  const respon = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/brands`);
-  const brands: BrandType[] = await respon.json();
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/brands`,
+  );
+  const brands: BrandType[] = await response.json();
 
   return brands;
 }
@@ -27,7 +29,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
       <div className="flex min-w-2xl flex-col gap-8">
         {brands.map((brand) => (
-          <Link key={brand.id} to={`/brand/${brand.slug}`}>
+          <Link key={brand.id} to={`/${brand.slug}`}>
             <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
               <CardHeader className="flex justify-between">
                 <div className="flex h-80 flex-col justify-between">
