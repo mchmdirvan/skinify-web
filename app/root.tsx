@@ -1,5 +1,5 @@
 import {
-  isRouteErrorresponsese,
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
@@ -58,7 +58,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 
-  if (isRouteErrorresponsese(error)) {
+  if (isRouteErrorResponse(error)) {
     message = error.status === 404 ? "404" : "Error";
     details =
       error.status === 404
