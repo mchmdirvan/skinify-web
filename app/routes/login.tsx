@@ -1,5 +1,7 @@
-import { Form, Link, redirect } from "react-router";
+import { data, Form, Link, redirect } from "react-router";
 import type { Route } from "./+types/login";
+
+import { getSession, commitSession } from "../session.server";
 
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -13,7 +15,25 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export async function loader({ request }: Route.LoaderArgs) {
+  const session = await getSession(request.headers.get("Cookie"));
+  console.log("token", session.get("token"));
+
+  if (session.has("token")) {
+    return redirect("/dashboard");
+  }
+
+  return data(
+    { error: session.get("error") },
+    {
+      headers: { "Set-Cookie": await commitSession(session) },
+    },
+  );
+}
+
 export async function clientAction({ request }: Route.ClientActionArgs) {
+  const session = await getSession(request.headers.get("Cookie"));
+
   let formData = await request.formData();
 
   let email = String(formData.get("email"));
@@ -34,15 +54,29 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
   );
 
   if (!response.ok) {
-    return null;
+    session.flash("error", "Invalid username/password");
+
+    // Redirect back to the login page with errors.
+    return redirect("/login", {
+      headers: { "Set-Cookie": await commitSession(session) },
+    });
   }
 
-  const result = await response.json();
+  const result: { token: string } = await response.json();
+  console.info({ result });
 
-  return redirect("/dashboard");
+  session.set("token", result.token);
+
+  return redirect("/dashboard", {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
 }
 
-export default function Login() {
+export default function Login({ loaderData }: Route.ComponentProps) {
+  const { error } = loaderData;
+
   return (
     <Form method="post" className={cn("flex flex-col gap-6")}>
       <div className="flex flex-col items-center gap-2 text-center">
@@ -50,6 +84,7 @@ export default function Login() {
         <p className="text-sm text-balance text-white">
           Enter your email below to login to your account
         </p>
+        {error ? <div className="error">{error}</div> : null}
       </div>
       <div className="grid gap-6">
         <div className="grid gap-3">
