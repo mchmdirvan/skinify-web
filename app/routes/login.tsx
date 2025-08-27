@@ -33,11 +33,11 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
     },
   );
 
-  const result = await response.json();
-
-  if (!result) {
+  if (!response.ok) {
     return null;
   }
+
+  const result = await response.json();
 
   return redirect("/dashboard");
 }
