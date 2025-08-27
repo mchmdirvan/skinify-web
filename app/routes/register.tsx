@@ -8,16 +8,16 @@ import { Form, redirect } from "react-router";
 export async function clientAction({ request }: Route.ClientActionArgs) {
   let formData = await request.formData();
 
-  let fullName = formData.get("fullName");
-  let username = formData.get("username");
-  let email = formData.get("email");
-  let password = formData.get("password");
+  let fullName = String(formData.get("fullName"));
+  let username = String(formData.get("username"));
+  let email = String(formData.get("email"));
+  let password = String(formData.get("password"));
 
   const registerUserData = {
-    fullName: String(fullName),
-    username: String(username),
-    email: String(email),
-    password: String(password),
+    fullName,
+    username,
+    email,
+    password,
   };
 
   const response = await fetch(
@@ -30,6 +30,10 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
   );
 
   const result = await response.json();
+
+  if (!result) {
+    return null;
+  }
 
   return redirect("/login");
 }
