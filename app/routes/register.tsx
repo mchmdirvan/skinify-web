@@ -3,7 +3,7 @@ import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
 import type { Route } from "./+types/register";
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
   let formData = await request.formData();
@@ -20,9 +20,18 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
     password: String(password),
   };
 
-  console.log(registerUserData);
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND_API_URL}/auth/register`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(registerUserData),
+    },
+  );
 
-  return null;
+  const result = await response.json();
+
+  return redirect("/login");
 }
 
 export default function Register() {
