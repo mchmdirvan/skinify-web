@@ -2,10 +2,32 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
+import type { Route } from "./+types/register";
+import { Form } from "react-router";
+
+export async function clientAction({ request }: Route.ClientActionArgs) {
+  let formData = await request.formData();
+
+  let fullName = formData.get("fullName");
+  let username = formData.get("username");
+  let email = formData.get("email");
+  let password = formData.get("password");
+
+  const registerUserData = {
+    fullName: String(fullName),
+    username: String(username),
+    email: String(email),
+    password: String(password),
+  };
+
+  console.log(registerUserData);
+
+  return null;
+}
 
 export default function Register() {
   return (
-    <form className={cn("flex flex-col gap-6")}>
+    <Form method="post" className={cn("flex flex-col gap-6")}>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold text-white">Sign Up</h1>
         <p className="text-sm text-balance text-white">
@@ -18,8 +40,9 @@ export default function Register() {
             Fullname
           </Label>
           <Input
+            className="text-white"
+            name="fullName"
             id="fullName"
-            type="fullName"
             placeholder="John Doe"
             required
           />
@@ -28,13 +51,26 @@ export default function Register() {
           <Label htmlFor="username" className="text-white">
             Username
           </Label>
-          <Input id="username" type="username" placeholder="johndoe" required />
+          <Input
+            className="text-white"
+            id="username"
+            name="username"
+            placeholder="johndoe"
+            required
+          />
         </div>
         <div className="grid gap-3">
           <Label htmlFor="email" className="text-white">
             Email
           </Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input
+            className="text-white"
+            id="email"
+            type="email"
+            name="email"
+            placeholder="m@example.com"
+            required
+          />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
@@ -42,7 +78,13 @@ export default function Register() {
               Password
             </Label>
           </div>
-          <Input id="password" type="password" required />
+          <Input
+            className="text-white"
+            id="password"
+            type="password"
+            name="password"
+            required
+          />
         </div>
         <Button type="submit" className="w-full">
           Login
@@ -60,6 +102,6 @@ export default function Register() {
           </a>
         </div>
       </div>
-    </form>
+    </Form>
   );
 }
