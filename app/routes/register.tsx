@@ -1,9 +1,17 @@
+import type { Route } from "./+types/register";
+import { Form, redirect } from "react-router";
+
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
-import type { Route } from "./+types/register";
-import { Form, redirect } from "react-router";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Skinify - Register" },
+    { name: "description", content: "Premium mobile phone skin" },
+  ];
+}
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
   let formData = await request.formData();
