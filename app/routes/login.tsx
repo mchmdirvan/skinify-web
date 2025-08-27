@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -31,12 +32,12 @@ export default function Login() {
           Login
         </Button>
       </div>
-      <div className="text-center text-sm text-white">
+      <Link to="/register" className="text-center text-sm text-white">
         Don&apos;t have an account?{" "}
         <a href="#" className="underline underline-offset-4">
           Sign up
         </a>
-      </div>
+      </Link>
     </form>
   );
 }
