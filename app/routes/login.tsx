@@ -1,7 +1,7 @@
 import { data, Form, Link, redirect } from "react-router";
 import type { Route } from "./+types/login";
 
-import { getSession, commitSession } from "../session.server";
+import { getSession, commitSession } from "../session.client";
 
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -15,13 +15,15 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function loader({ request }: Route.LoaderArgs) {
+export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   const session = await getSession(request.headers.get("Cookie"));
   console.log("token", session.get("token"));
 
   if (session.has("token")) {
     return redirect("/dashboard");
   }
+
+  console.info("login:token", session.get("token"));
 
   return data(
     { error: session.get("error") },
@@ -56,7 +58,6 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
   if (!response.ok) {
     session.flash("error", "Invalid username/password");
 
-    // Redirect back to the login page with errors.
     return redirect("/login", {
       headers: { "Set-Cookie": await commitSession(session) },
     });
