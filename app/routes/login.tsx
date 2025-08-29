@@ -1,7 +1,7 @@
 import { data, Form, Link, redirect } from "react-router";
 import type { Route } from "./+types/login";
 
-import { getSession, commitSession } from "../session.client";
+import { getSession, commitSession } from "../session.server";
 
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function clientLoader({ request }: Route.ClientLoaderArgs) {
+export async function loader({ request }: Route.LoaderArgs) {
   const session = await getSession(request.headers.get("Cookie"));
   console.log("token", session.get("token"));
 
@@ -33,7 +33,7 @@ export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   );
 }
 
-export async function clientAction({ request }: Route.ClientActionArgs) {
+export async function action({ request }: Route.ActionArgs) {
   const session = await getSession(request.headers.get("Cookie"));
 
   let formData = await request.formData();

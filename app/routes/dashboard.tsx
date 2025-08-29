@@ -1,10 +1,10 @@
 import type { Route } from "./+types/dashboard";
 import { redirect } from "react-router";
 
-import { destroySession, getSession } from "../session.client";
+import { destroySession, getSession } from "../session.server";
 import type { User } from "~/modules/user/type";
 
-export async function clientLoader({ request }: Route.ClientLoaderArgs) {
+export async function loader({ request }: Route.LoaderArgs) {
   const session = await getSession(request.headers.get("Cookie"));
 
   if (!session.has("token")) {
@@ -14,9 +14,7 @@ export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   const token = session.get("token");
   console.info("dashboard:token", token);
 
-  // TODO: Get user data
-  // TODO: ky.post("/auth/me")
-  const response = await fetch(`${process.env.BACKEND_API_URL}/auth/me`, {
+  const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/auth/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +34,7 @@ export async function clientLoader({ request }: Route.ClientLoaderArgs) {
   return userData;
 }
 
-export default function DashboardPage({ loaderData }: Route.ComponentProps) {
+export default function Dashboard({ loaderData }: Route.ComponentProps) {
   return (
     <div className="container mx-auto py-10">
       <h1 className="mb-8 text-3xl font-bold">Dashboard</h1>
