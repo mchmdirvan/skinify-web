@@ -27,7 +27,6 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 
 export default function ProductSlugRoute({ loaderData }: Route.ComponentProps) {
   const product = loaderData;
-  console.log(loaderData);
 
   const number = product.price;
   const formatNumber = new Intl.NumberFormat("id-ID").format(number);
