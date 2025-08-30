@@ -26,7 +26,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
   return (
     <div className="mx-10 my-10">
       <section className="relative mt-40 flex justify-between gap-40">
-        <h2 className="font-audiowide sticky top-40 self-start text-7xl font-bold text-white">
+        <h2 className="font-chakra-petch sticky top-40 self-start text-7xl font-bold text-white">
           Shop
         </h2>
 
@@ -36,7 +36,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
               <Card className="w-full min-w-[55vw] cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
                 <CardHeader className="flex justify-between">
                   <div className="flex h-96 flex-col justify-between">
-                    <CardTitle className="font-audiowide text-5xl text-white">
+                    <CardTitle className="font-chakra-petch text-5xl text-white">
                       {brand.name}
                     </CardTitle>
                     <p className="text-white">Premium Skins</p>

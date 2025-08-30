@@ -126,7 +126,7 @@ export default function Home() {
       <section>
         <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
           <CardHeader className="flex items-center justify-between">
-            <CardTitle className="text-white">
+            <CardTitle className="font-chakra-petch text-white">
               The first and the only skin brand offering both an Installation
               Guarantee and 30-Day Money Back Guarantee.
             </CardTitle>
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="space-y-8">
           <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5 py-14">
             <CardHeader>
-              <CardTitle className="font-audiowide text-5xl text-amber-400">
+              <CardTitle className="font-chakra-petch text-5xl text-amber-400">
                 Made with Quality
               </CardTitle>
             </CardHeader>
@@ -170,7 +170,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="font-audiowide py-5 text-center text-5xl text-white">
+        <h2 className="font-chakra-petch py-5 text-center text-5xl text-white">
           The ultimate protection for your device.
         </h2>
         <div className="mt-10 grid grid-cols-3 gap-8">
@@ -181,7 +181,7 @@ export default function Home() {
                   <featureCard.icon className="text-yellow-500" size={60} />
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <CardTitle className="text-xl text-white">
+                  <CardTitle className="font-chakra-petch text-xl text-white">
                     {featureCard.title}
                   </CardTitle>
                   <p className="text-justify text-xs text-white">
@@ -197,7 +197,7 @@ export default function Home() {
       <section>
         <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
           <CardHeader className="py-10">
-            <CardTitle className="font-audiowide text-center text-5xl text-white">
+            <CardTitle className="font-chakra-petch text-center text-5xl text-white">
               Our Reviews
             </CardTitle>
           </CardHeader>

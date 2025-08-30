@@ -48,7 +48,7 @@ export default function AppLayout() {
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className="font-audiowide text-3xl font-semibold text-amber-400 hover:bg-neutral-800 hover:text-amber-400"
+                className="font-chakra-petch text-4xl font-bold text-amber-400 hover:bg-neutral-800 hover:text-amber-400"
               >
                 <Link to="/">skinify</Link>
               </NavigationMenuLink>
@@ -112,7 +112,7 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800 hover:text-white"
               >
-                <Link to="/shop/login">Sign In</Link>
+                <Link to="/login">Sign In</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
@@ -121,7 +121,7 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800 hover:text-white"
               >
-                <Link to="/shop/register">Sign Up</Link>
+                <Link to="/register">Sign Up</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
@@ -160,7 +160,7 @@ export default function AppLayout() {
         <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-4 py-12 sm:px-6 lg:px-8">
           <CardTitle className="grid grid-cols-2 gap-6 pb-8">
             <div>
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="font-chakra-petch text-2xl font-bold text-white">
                 Get exclusive offers
               </h2>
               <p className="mt-2 text-gray-400">
@@ -178,7 +178,7 @@ export default function AppLayout() {
 
           <CardContent className="grid grid-cols-1 gap-8 border-t border-zinc-800 pt-10 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-6">
-              <h3 className="font-audiowide text-3xl font-bold text-amber-400">
+              <h3 className="font-chakra-petch text-3xl font-bold text-amber-400">
                 Skinify®
               </h3>
               <p className="text-xs text-white">
