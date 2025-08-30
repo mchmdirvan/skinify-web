@@ -22,6 +22,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
+import { Button } from "~/components/ui/button";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -155,28 +156,17 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       />
 
       <section>
-        <h2 className="font-audiowide py-5 text-center text-5xl text-white">
-          The ultimate protection for your device.
-        </h2>
-        <div className="mt-10 grid grid-cols-3 gap-8">
-          {featureCards.map((featureCard) => {
-            return (
-              <Card className="max-w-md border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
-                <CardHeader className="mx-5 flex min-h-[30vh] items-center justify-center rounded-2xl bg-radial-[at_100%_10%] from-black to-amber-500 to-250%">
-                  <featureCard.icon className="text-yellow-500" size={60} />
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <CardTitle className="text-xl text-white">
-                    {featureCard.title}
-                  </CardTitle>
-                  <p className="text-justify text-xs text-white">
-                    {featureCard.description}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+          <CardHeader className="flex items-center justify-between">
+            <CardTitle className="text-white">
+              The first and the only skin brand offering both an Installation
+              Guarantee and 30-Day Money Back Guarantee.
+            </CardTitle>
+            <Button className="min-w-sm rounded-md bg-amber-400 hover:bg-white hover:text-amber-400">
+              <Link to="/shop">SHOP ALL</Link>
+            </Button>
+          </CardHeader>
+        </Card>
       </section>
 
       <section className="grid grid-cols-2 gap-8">
@@ -207,6 +197,31 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5">
           <img src={QualityR} className="max-h-[90vh] rounded-md" />
         </Card>
+      </section>
+
+      <section>
+        <h2 className="font-audiowide py-5 text-center text-5xl text-white">
+          The ultimate protection for your device.
+        </h2>
+        <div className="mt-10 grid grid-cols-3 gap-8">
+          {featureCards.map((featureCard) => {
+            return (
+              <Card className="max-w-md border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+                <CardHeader className="mx-5 flex min-h-[30vh] items-center justify-center rounded-2xl bg-radial-[at_100%_10%] from-black to-amber-500 to-250%">
+                  <featureCard.icon className="text-yellow-500" size={60} />
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <CardTitle className="text-xl text-white">
+                    {featureCard.title}
+                  </CardTitle>
+                  <p className="text-justify text-xs text-white">
+                    {featureCard.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
       </section>
 
       <section>
