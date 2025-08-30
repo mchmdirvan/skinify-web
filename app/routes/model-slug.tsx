@@ -1,5 +1,5 @@
-import { ShieldCheckIcon } from "lucide-react";
 import type { Route } from "./+types/model-slug";
+import { ShieldCheckIcon } from "lucide-react";
 import { Link } from "react-router";
 
 import {
@@ -9,9 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Progress } from "~/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { ModelType } from "~/modules/model/type";
+import { Progress } from "~/components/ui/progress";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -31,6 +31,8 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 
 export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
   const { params, products } = loaderData;
+
+  console.log(loaderData);
 
   const review = [
     { stars: 5, percentage: 95 },
@@ -85,7 +87,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
               {products.products.map((product) => (
                 <Link
                   key={product.id}
-                  to={`/shop/${params.brandSlug}/${product.slug}`}
+                  to={`/shop/${params.brandSlug}/${params.modelSlug}/${product.slug}`}
                 >
                   <Card className="cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
                     <CardHeader className="flex justify-between">
@@ -152,7 +154,10 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
               <p className="my-5 text-xs text-white">1-3 of 1312 Reviews</p>
               <div className="space-y-4">
                 {reviewsData.map((review) => (
-                  <Card className="max-w-2xl border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+                  <Card
+                    key={review.content}
+                    className="max-w-2xl border border-zinc-800 bg-linear-to-b from-neutral-900 to-black"
+                  >
                     <CardContent>
                       <div className="flex justify-between">
                         <div>
