@@ -12,7 +12,6 @@ export async function loader({ request }: Route.LoaderArgs) {
   }
 
   const token = session.get("token");
-  console.info("dashboard:token", token);
 
   const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/auth/me`, {
     method: "GET",
@@ -29,7 +28,6 @@ export async function loader({ request }: Route.LoaderArgs) {
   }
 
   const userData: User = await response.json();
-  console.info({ userData });
 
   return userData;
 }
