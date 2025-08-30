@@ -17,13 +17,10 @@ export function meta({}: Route.MetaArgs) {
 
 export async function loader({ request }: Route.LoaderArgs) {
   const session = await getSession(request.headers.get("Cookie"));
-  console.log("token", session.get("token"));
 
   if (session.has("token")) {
     return redirect("/dashboard");
   }
-
-  console.info("login:token", session.get("token"));
 
   return data(
     { error: session.get("error") },
@@ -64,7 +61,6 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   const result: { token: string } = await response.json();
-  console.info({ result });
 
   session.set("token", result.token);
 

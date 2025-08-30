@@ -32,8 +32,6 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
   const { params, products } = loaderData;
 
-  console.log(loaderData);
-
   const review = [
     { stars: 5, percentage: 95 },
     { stars: 4, percentage: 5 },
