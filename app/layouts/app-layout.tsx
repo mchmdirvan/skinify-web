@@ -20,9 +20,9 @@ export default function AppLayout() {
     { to: "/", text: "How to Apply" },
     { to: "/", text: "Installation Warranty" },
     { to: "/", text: "30-day Money Back Guarantee" },
-    { to: "/", text: "Exacoat® Cashback Program" },
-    { to: "/", text: "Exacoat® Premiere Program" },
-    { to: "/", text: "Exacoat® Offline Store" },
+    { to: "/", text: "Skinify® Cashback Program" },
+    { to: "/", text: "Skinify® Premiere Program" },
+    { to: "/", text: "Skinify® Offline Store" },
   ];
 
   const extrasLinks = [
@@ -31,7 +31,7 @@ export default function AppLayout() {
     { to: "/", text: "Blog" },
     { to: "/", text: "About Heat Dissipation 🔥" },
     { to: "/", text: "Become an Affiliate" },
-    { to: "/", text: "Exacoat® Affiliate Program" },
+    { to: "/", text: "Skinify® Affiliate Program" },
     { to: "/", text: "Giveaway" },
     { to: "/", text: "Career" },
     { to: "/", text: "About Us" },
@@ -176,7 +176,9 @@ export default function AppLayout() {
 
           <CardContent className="grid grid-cols-1 gap-8 border-t border-zinc-800 pt-10 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-amber-400">Skinify®</h3>
+              <h3 className="font-audiowide text-3xl font-bold text-amber-400">
+                Skinify®
+              </h3>
               <p className="text-xs text-white">
                 Protecting the device worldwide, one device at a time.
               </p>
