@@ -64,16 +64,16 @@ export default function AppLayout() {
                 <ul className="grid w-[200px] gap-4">
                   <li className="">
                     <NavigationMenuLink asChild>
-                      <Link to="/iphone">iPhone</Link>
+                      <Link to="/shop/iphone">iPhone</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/samsung">Samsung</Link>
+                      <Link to="/shop/samsung">Samsung</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/xiaomi">Xiaomi</Link>
+                      <Link to="/shop/xiaomi">Xiaomi</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/">See All</Link>
+                      <Link to="/shop">See All</Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
@@ -112,7 +112,7 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800 hover:text-white"
               >
-                <Link to="/login">Sign In</Link>
+                <Link to="/shop/login">Sign In</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
@@ -121,7 +121,7 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800 hover:text-white"
               >
-                <Link to="/docs">Sign Up</Link>
+                <Link to="/shop/register">Sign Up</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
@@ -130,7 +130,8 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800"
               >
-                <Link to="/docs">
+                {/* TODO */}
+                <Link to="/">
                   <ShoppingCartIcon />
                 </Link>
               </NavigationMenuLink>
@@ -141,7 +142,8 @@ export default function AppLayout() {
                 asChild
                 className="text-white hover:bg-neutral-800"
               >
-                <Link to="/docs">
+                <Link to="/">
+                  {/* TODO */}
                   <SearchIcon />
                 </Link>
               </NavigationMenuLink>
