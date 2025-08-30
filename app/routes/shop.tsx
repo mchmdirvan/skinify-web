@@ -2,7 +2,7 @@ import type { Route } from "./+types/shop";
 import { Link } from "react-router";
 import { Fragment } from "react/jsx-runtime";
 
-import { Card, CardHeader, CardTitle } from "~/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import type { BrandType } from "~/modules/brand/type";
 
 export function meta({}: Route.MetaArgs) {
@@ -33,7 +33,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
 
         <div className="grid grid-cols-2 gap-8">
           {brands.map((brand, index) => (
-            <Fragment>
+            <Fragment key={brand.id}>
               {index < 4 && (
                 <Link
                   key={brand.id}
@@ -76,6 +76,25 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
             </Fragment>
           ))}
         </div>
+      </section>
+
+      <section className="my-40">
+        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+          <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
+            <p className="font-chakra-petch text-center text-3xl font-bold text-white">
+              Can't find your device?
+            </p>
+            <div className="flex justify-center gap-1 text-white">
+              <a href="tel:+6289755556000" className="hover:underline">
+                +62 897 555 6000
+              </a>
+              <p>|</p>
+              <a href="mailto:skinify@skinify.com" className="hover:underline">
+                skinify@skinify.com
+              </a>
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
