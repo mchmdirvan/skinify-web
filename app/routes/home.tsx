@@ -15,6 +15,13 @@ import type { BrandType } from "~/modules/brand/type";
 import HeroImage from "/hero.jpg";
 import QualityR from "/quality-r.jpg";
 import QualityL from "/quality-l.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "~/components/ui/carousel";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -71,6 +78,51 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       title: "Premium Materials",
       description:
         "Made with high-quality vinyl that offers superior scratch resistance and maintains its color vibrancy over time, ensuring your device always looks premium.",
+    },
+  ];
+
+  const reviewCards = [
+    {
+      rating: 5,
+      content:
+        "Really cool stuff, suitable for millennials. Fast delivery. At first I was hesitant because this was my first time buying goods directly from the website.",
+      author: "Adecya",
+      authorInfo: "verified customer",
+    },
+    {
+      rating: 5,
+      content:
+        "The color and material are really good. I've been using it for 3 years, it's still good and protects my cellphone, plus there's a guarantee that if it's installed incorrectly, it will be sent back in a package, highly recommend.",
+      author: "Fahmi",
+      authorInfo: "verified customer",
+    },
+    {
+      rating: 5,
+      content:
+        "I honestly had no idea I needed this before, and I now find it impossible to think about using my devices without Exacoat. It's beyond greatness in terms of precision and material wise.",
+      author: "Edwin Yang",
+      authorInfo: "@edwinwg | digital creator",
+    },
+    {
+      rating: 5,
+      content:
+        "Amazing quality and perfect fit! The installation was surprisingly easy and the skin feels incredibly durable. My phone looks brand new even after months of use.",
+      author: "Sarah Chen",
+      authorInfo: "verified customer",
+    },
+    {
+      rating: 5,
+      content:
+        "Best investment for my device protection. The precision cutting is incredible - every port and camera cutout is perfectly aligned. Customer service was also top-notch when I had questions.",
+      author: "Marcus Rodriguez",
+      authorInfo: "tech enthusiast",
+    },
+    {
+      rating: 5,
+      content:
+        "I've tried many brands before but nothing comes close to this quality. The material feels premium and the adhesive is strong but removable without residue. Will definitely order again!",
+      author: "Jennifer Park",
+      authorInfo: "@jenniferreviews | product reviewer",
     },
   ];
 
@@ -154,6 +206,53 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
         <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5">
           <img src={QualityR} className="max-h-[90vh] rounded-md" />
+        </Card>
+      </section>
+
+      <section>
+        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+          <CardHeader className="py-10">
+            <CardTitle className="font-audiowide text-center text-5xl text-white">
+              Our Reviews
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent className="px-20 pb-10">
+            <Carousel
+              opts={{
+                align: "start",
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {reviewCards.map((reviewCard, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="md:basis-1/2 lg:basis-1/3"
+                  >
+                    <Card className="bg-neutral-800">
+                      <CardContent className="flex flex-col items-center justify-center gap-4">
+                        <p>⭐⭐⭐⭐⭐</p>
+                        <p className="text-center text-xs text-white">
+                          {reviewCard.content}
+                        </p>
+                        <div>
+                          <p className="text-center text-xs font-bold text-white">
+                            {reviewCard.author}
+                          </p>
+                          <p className="text-center text-xs text-white">
+                            {reviewCard.authorInfo}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </CardContent>
         </Card>
       </section>
     </div>
