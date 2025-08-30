@@ -61,7 +61,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
                     <CardHeader className="flex justify-between">
                       <div className="flex h-48 flex-col justify-between">
                         <CardTitle className="font-chakra-petch text-xl text-white">
-                          {product.name.split(" ")[4]}
+                          {product.name.split("-")[1]}
                         </CardTitle>
                         <p className="text-white">{product.price}</p>
                       </div>
