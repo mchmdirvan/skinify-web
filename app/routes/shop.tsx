@@ -1,5 +1,6 @@
 import type { Route } from "./+types/shop";
 import { Link } from "react-router";
+import { Fragment } from "react/jsx-runtime";
 
 import { Card, CardHeader, CardTitle } from "~/components/ui/card";
 import type { BrandType } from "~/modules/brand/type";
@@ -30,21 +31,49 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
           Shop
         </h2>
 
-        <div className="flex flex-col gap-8">
-          {brands.map((brand) => (
-            <Link key={brand.id} to={`/${brand.slug}`}>
-              <Card className="w-full min-w-[55vw] cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
-                <CardHeader className="flex justify-between">
-                  <div className="flex h-96 flex-col justify-between">
-                    <CardTitle className="font-chakra-petch text-5xl text-white">
-                      {brand.name}
-                    </CardTitle>
-                    <p className="text-white">Premium Skins</p>
-                  </div>
-                  <img src={brand.imageUrl} className="w-[400px]" />
-                </CardHeader>
-              </Card>
-            </Link>
+        <div className="grid grid-cols-2 gap-8">
+          {brands.map((brand, index) => (
+            <Fragment>
+              {index < 4 && (
+                <Link
+                  key={brand.id}
+                  to={`/shop/${brand.slug}`}
+                  className="col-span-2"
+                >
+                  <Card className="w-full min-w-[55vw] cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+                    <CardHeader className="flex justify-between">
+                      <div className="flex h-96 flex-col justify-between">
+                        <CardTitle className="font-chakra-petch text-5xl text-white">
+                          {brand.name}
+                        </CardTitle>
+                        <p className="text-white">Premium Skins</p>
+                      </div>
+                      <img src={brand.imageUrl} className="w-[400px]" />
+                    </CardHeader>
+                  </Card>
+                </Link>
+              )}
+
+              {index >= 4 && (
+                <Link
+                  key={brand.id}
+                  to={`/shop/${brand.slug}`}
+                  className="col-span-1"
+                >
+                  <Card className="w-full cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+                    <CardHeader className="flex justify-between">
+                      <div className="flex h-48 flex-col justify-between">
+                        <CardTitle className="font-chakra-petch text-xl text-white">
+                          {brand.name}
+                        </CardTitle>
+                        <p className="text-white">Premium Skins</p>
+                      </div>
+                      <img src={brand.imageUrl} className="w-[200px]" />
+                    </CardHeader>
+                  </Card>
+                </Link>
+              )}
+            </Fragment>
           ))}
         </div>
       </section>
