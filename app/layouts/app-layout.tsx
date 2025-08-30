@@ -13,18 +13,18 @@ import {
 export default function AppLayout() {
   return (
     <main className="flex min-h-[100vh] flex-col bg-black">
-      <header>
+      <header className="sticky top-4 mx-5 rounded-xl border border-zinc-800 bg-linear-to-b from-neutral-900/50 to-black/50">
         <NavigationMenu
           viewport={false}
-          className="flex min-w-full justify-between px-40 py-2"
+          className="flex min-w-full justify-between px-10 py-2"
         >
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
-                className="text-2xl font-semibold text-white hover:bg-neutral-800 hover:text-white"
+                className="font-audiowide text-2xl font-semibold text-amber-400 hover:bg-neutral-800"
               >
-                <Link to="/">Skinify</Link>
+                <Link to="/">skinify</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
