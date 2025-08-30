@@ -1,8 +1,20 @@
+import {
+  BrickWallIcon,
+  ClockArrowUpIcon,
+  HandIcon,
+  ScanHeartIcon,
+  ShieldCheckIcon,
+  ShieldUserIcon,
+} from "lucide-react";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 
-import { Card, CardHeader, CardTitle } from "~/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import type { BrandType } from "~/modules/brand/type";
+
+import HeroImage from "/hero.jpg";
+import QualityR from "/quality-r.jpg";
+import QualityL from "/quality-l.jpg";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -23,27 +35,127 @@ export async function clientLoader() {
 export default function Home({ loaderData }: Route.ComponentProps) {
   const brands = loaderData;
 
-  return (
-    <div className="flex justify-between px-40 py-10">
-      <h2 className="text-5xl font-bold text-white">Shop</h2>
+  const featureCards = [
+    {
+      icon: ClockArrowUpIcon,
+      title: "Last more than 3+ Years",
+      description:
+        "With the 3M material, our skins could last more than 3+ years. Your gadget will look the same as the time you applied the skin.",
+    },
+    {
+      icon: HandIcon,
+      title: "Bye, permanent stains.",
+      description:
+        "Device skins prevent stains caused by fungus, which forms from dust and moisture entering the gadget's interior. Skins keep everything out.",
+    },
+    {
+      icon: ScanHeartIcon,
+      title: "No residue upon removal",
+      description:
+        "By using our skin, your gadget will look the same as the time you applied the skin. Removal is guaranteed to leave behind zero adhesive residue.",
+    },
+    {
+      icon: ShieldCheckIcon,
+      title: "Installation Guarantee",
+      description:
+        "We offer an exclusive 2-day installation warranty for peace of mind. If you make a mistake during installation, we'll send a replacement for only the shipping fee.",
+    },
+    {
+      icon: ShieldUserIcon,
+      title: "Precision Guarantee",
+      description:
+        "Every skin is crafted with obsessive attention in detail by our experienced Research and Development team, with industrial grade cutting machine.",
+    },
+    {
+      icon: BrickWallIcon,
+      title: "Premium Materials",
+      description:
+        "Made with high-quality vinyl that offers superior scratch resistance and maintains its color vibrancy over time, ensuring your device always looks premium.",
+    },
+  ];
 
-      <div className="flex min-w-2xl flex-col gap-8">
-        {brands.map((brand) => (
-          <Link key={brand.id} to={`/${brand.slug}`}>
-            <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
-              <CardHeader className="flex justify-between">
-                <div className="flex h-80 flex-col justify-between">
-                  <CardTitle className="text-3xl text-white">
-                    {brand.name}
+  return (
+    // <div className="flex justify-between px-40 py-10">
+    //   <h2 className="text-5xl font-bold text-white">Shop</h2>
+
+    //   <div className="flex min-w-2xl flex-col gap-8">
+    //     {brands.map((brand) => (
+    //       <Link key={brand.id} to={`/${brand.slug}`}>
+    //         <Card className="w-full max-w-2xl cursor-pointer overflow-hidden border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+    //           <CardHeader className="flex justify-between">
+    //             <div className="flex h-80 flex-col justify-between">
+    //               <CardTitle className="text-3xl text-white">
+    //                 {brand.name}
+    //               </CardTitle>
+    //               <p className="text-white">Premium Skins</p>
+    //             </div>
+    //             <img src={brand.imageUrl} className="w-[300px]" />
+    //           </CardHeader>
+    //         </Card>
+    //       </Link>
+    //     ))}
+    //   </div>
+    // </div>
+    <div className="mx-10 mt-10 min-h-[200vh] space-y-10">
+      <img
+        src={HeroImage}
+        className="max-h-[80vh] w-full rounded-xl border border-zinc-800 object-cover"
+      />
+
+      <section>
+        <h2 className="font-audiowide py-5 text-center text-5xl text-white">
+          The ultimate protection for your device.
+        </h2>
+        <div className="mt-10 grid grid-cols-3 gap-8">
+          {featureCards.map((featureCard) => {
+            return (
+              <Card className="max-w-md border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+                <CardHeader className="mx-5 flex min-h-[30vh] items-center justify-center rounded-2xl bg-radial-[at_100%_10%] from-black to-amber-500 to-250%">
+                  <featureCard.icon className="text-yellow-500" size={60} />
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <CardTitle className="text-xl text-white">
+                    {featureCard.title}
                   </CardTitle>
-                  <p className="text-white">Premium Skins</p>
-                </div>
-                <img src={brand.imageUrl} className="w-[300px]" />
-              </CardHeader>
-            </Card>
-          </Link>
-        ))}
-      </div>
+                  <p className="text-justify text-xs text-white">
+                    {featureCard.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="grid grid-cols-2 gap-8">
+        <div className="space-y-8">
+          <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5 py-14">
+            <CardHeader>
+              <CardTitle className="font-audiowide text-5xl text-amber-400">
+                Made with Quality
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <p className="text-justify text-sm text-white">
+                All products are made with an obsessive attention to detail in
+                order to ensure the highest quality possible.
+              </p>
+              <p className="text-justify text-sm text-white">
+                No aspect is ever overlooked – from the sourcing of the finest
+                materials to the most minute details of creation.
+              </p>
+            </CardContent>
+          </Card>
+
+          <img
+            src={QualityL}
+            className="max-h-[60vh] min-w-full rounded-xl border border-zinc-800 object-cover"
+          />
+        </div>
+        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5">
+          <img src={QualityR} className="max-h-[90vh] rounded-md" />
+        </Card>
+      </section>
     </div>
   );
 }
