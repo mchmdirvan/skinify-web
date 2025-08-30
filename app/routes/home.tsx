@@ -176,7 +176,10 @@ export default function Home() {
         <div className="mt-10 grid grid-cols-3 gap-8">
           {featureCards.map((featureCard) => {
             return (
-              <Card className="max-w-md border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+              <Card
+                className="max-w-md border border-zinc-800 bg-linear-to-b from-neutral-900 to-black"
+                key={featureCard.title}
+              >
                 <CardHeader className="mx-5 flex min-h-[30vh] items-center justify-center rounded-2xl bg-radial-[at_100%_10%] from-black to-amber-500 to-250%">
                   <featureCard.icon className="text-yellow-500" size={60} />
                 </CardHeader>
