@@ -13,7 +13,7 @@ import {
 export default function AppLayout() {
   return (
     <main className="flex min-h-[100vh] flex-col bg-black">
-      <header className="sticky top-4 mx-10 rounded-xl border border-zinc-800 bg-linear-to-b from-neutral-900/50 to-black/50">
+      <header className="sticky top-4 mx-10 rounded-xl border border-zinc-800 bg-linear-to-b from-neutral-900/50 to-black/50 backdrop-blur-xs">
         <NavigationMenu
           viewport={false}
           className="flex min-w-full justify-between px-10 py-2"
