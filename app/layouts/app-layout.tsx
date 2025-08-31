@@ -131,7 +131,7 @@ export default function AppLayout() {
                 className="text-white hover:bg-neutral-800"
               >
                 {/* TODO */}
-                <Link to="/">
+                <Link to="/cart">
                   <ShoppingCartIcon />
                 </Link>
               </NavigationMenuLink>
