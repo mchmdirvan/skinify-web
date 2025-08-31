@@ -8,7 +8,7 @@ export default function AuthLayout() {
         <div className="flex justify-center gap-2 md:justify-start">
           <Link
             to="/"
-            className="flex items-center gap-2 text-xl font-bold text-white"
+            className="font-audiowide flex items-center gap-2 text-xl font-bold text-white"
           >
             Skinify
           </Link>
