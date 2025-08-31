@@ -8,7 +8,7 @@ import { cn } from "~/lib/utils";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Skinify - Register" },
+    { title: "Register - Skinify" },
     { name: "description", content: "Premium mobile phone skin" },
   ];
 }

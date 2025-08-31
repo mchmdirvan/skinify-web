@@ -13,9 +13,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { ModelType } from "~/modules/model/type";
 import { Progress } from "~/components/ui/progress";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ loaderData }: Route.MetaArgs) {
   return [
-    { title: "Skinify - Product" },
+    { title: `${loaderData?.products.name} - Skinify` },
     { name: "description", content: "Premium mobile phone skin" },
   ];
 }

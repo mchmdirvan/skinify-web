@@ -10,7 +10,7 @@ import { cn } from "~/lib/utils";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Skinify - Login" },
+    { title: "Login - Skinify" },
     { name: "description", content: "Premium mobile phone skin" },
   ];
 }

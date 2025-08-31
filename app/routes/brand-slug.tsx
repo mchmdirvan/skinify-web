@@ -5,9 +5,9 @@ import { Fragment } from "react/jsx-runtime";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import type { BrandType } from "~/modules/brand/type";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ loaderData }: Route.MetaArgs) {
   return [
-    { title: "Skinify - Model" },
+    { title: ` ${loaderData?.models.name} - Skinify` },
     { name: "description", content: "Premium mobile phone skin" },
   ];
 }

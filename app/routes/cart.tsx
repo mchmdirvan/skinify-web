@@ -2,6 +2,14 @@ import { Card, CardContent, CardHeader } from "~/components/ui/card";
 
 import Iphone16 from "/iPhone-16.png";
 import { Button } from "~/components/ui/button";
+import type { Route } from "./+types/cart";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Cart - Skinify" },
+    { name: "description", content: "Premium mobile phone skin" },
+  ];
+}
 
 export default function Cart() {
   return (

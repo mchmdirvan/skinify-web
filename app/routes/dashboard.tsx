@@ -4,6 +4,13 @@ import { redirect } from "react-router";
 import { destroySession, getSession } from "../session.server";
 import type { User } from "~/modules/user/type";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Dashboard - Skinify" },
+    { name: "description", content: "Premium mobile phone skin" },
+  ];
+}
+
 export async function loader({ request }: Route.LoaderArgs) {
   const session = await getSession(request.headers.get("Cookie"));
 

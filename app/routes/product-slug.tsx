@@ -9,9 +9,9 @@ import {
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ loaderData }: Route.MetaArgs) {
   return [
-    { title: "Skinify - Detail Product" },
+    { title: `${loaderData?.name} - Skinify` },
     { name: "description", content: "Premium mobile phone skin" },
   ];
 }

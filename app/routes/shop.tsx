@@ -7,7 +7,7 @@ import type { BrandType } from "~/modules/brand/type";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Skinify - Shop" },
+    { title: "Shop - Skinify" },
     { name: "description", content: "Premium mobile phone skin" },
   ];
 }
