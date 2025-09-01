@@ -265,7 +265,7 @@ export default function AppLayout() {
         </div>
       </header>
 
-      <main className="mx-5 mt-10 flex-1 lg:mx-10">
+      <main className="mx-5 mt-10 flex-1 text-white lg:mx-10">
         <Outlet />
       </main>
 
