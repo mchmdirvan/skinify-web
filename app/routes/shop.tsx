@@ -1,6 +1,6 @@
+import { Fragment } from "react/jsx-runtime";
 import type { Route } from "./+types/shop";
 import { Link } from "react-router";
-import { Fragment } from "react/jsx-runtime";
 
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import type { BrandType } from "~/modules/brand/type";
@@ -25,7 +25,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
   const brands = loaderData;
 
   return (
-    <div>
+    <Fragment>
       <section className="relative flex flex-col justify-between gap-10 lg:mt-40 lg:gap-40 xl:flex-row">
         <h2 className="font-chakra-petch top-40 text-center text-6xl font-bold text-white lg:text-7xl xl:sticky xl:self-start">
           Shop
@@ -104,6 +104,6 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
           </CardContent>
         </Card>
       </section>
-    </div>
+    </Fragment>
   );
 }

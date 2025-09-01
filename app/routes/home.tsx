@@ -6,15 +6,14 @@ import {
   ShieldCheckIcon,
   ShieldUserIcon,
 } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import type { BrandType } from "~/modules/brand/type";
-
-import HeroImage from "/hero.jpg";
-import QualityR from "/quality-r.jpg";
 import QualityL from "/quality-l.jpg";
+import QualityR from "/quality-r.jpg";
+import HeroImage from "/hero.jpg";
+
 import {
   Carousel,
   CarouselContent,
@@ -23,6 +22,7 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import { Button } from "~/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -117,7 +117,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-10">
+    <Fragment>
       <img
         src={HeroImage}
         className="min-h-[80vh] w-full rounded-xl border border-zinc-800 object-cover lg:max-h-[80vh]"
@@ -243,6 +243,6 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-    </div>
+    </Fragment>
   );
 }
