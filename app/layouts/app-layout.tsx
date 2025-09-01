@@ -265,12 +265,12 @@ export default function AppLayout() {
         </div>
       </header>
 
-      <main className="flex-1">
+      <main className="mx-5 mt-10 flex-1 lg:mx-10">
         <Outlet />
       </main>
 
       <footer className="mx-5 my-10 lg:mx-10">
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-4 py-12 sm:px-6 lg:px-8">
+        <Card className="px-4 py-12 sm:px-6 lg:px-8">
           <CardTitle className="grid gap-6 pb-8 lg:grid-cols-2">
             <div>
               <h2 className="font-chakra-petch text-2xl font-bold text-white">
@@ -283,7 +283,7 @@ export default function AppLayout() {
             </div>
             <Button
               variant="outline"
-              className="w-full rounded-full border-zinc-800 bg-neutral-900 py-6 text-xs text-white"
+              className="w-full rounded-full border-zinc-800 bg-neutral-900 py-6 text-xs text-white lg:text-base"
             >
               SUBSCRIBE TO SKINIFY NEWSLETTER
             </Button>
