@@ -51,11 +51,11 @@ export default function Register() {
     <Form method="post" className={cn("flex flex-col gap-6")}>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Sign Up</h1>
-        <p className="text-sm text-balance">
+        <p className="text-xs text-balance md:text-sm">
           Create your account to start customizing your phone skins
         </p>
       </div>
-      <div className="grid gap-6">
+      <div className="grid gap-3 lg:gap-6">
         <div className="grid gap-3">
           <Label htmlFor="fullName">Fullname</Label>
           <Input
@@ -86,20 +86,12 @@ export default function Register() {
           <Input id="password" type="password" name="password" required />
         </div>
         <Button type="submit" className="w-full">
-          Login
+          Register
         </Button>
       </div>
-      <div className="text-center text-sm">
-        <p>By clicking ‘Register’, you agree to the:</p>
-        <div className="text-xs">
-          <a href="#" className="underline underline-offset-4">
-            Terms of use
-          </a>
-          |
-          <a href="#" className="underline underline-offset-4">
-            Privacy Policy
-          </a>
-        </div>
+      <div className="text-center text-xs md:text-sm">
+        <p>By clicking ‘Register’, you agree to the</p>
+        <p>Terms of use & Privacy Policy</p>
       </div>
     </Form>
   );
