@@ -40,7 +40,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
                   to={`/shop/${brand.slug}`}
                   className="col-span-2"
                 >
-                  <Card className="w-full min-w-[55vw] cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+                  <Card className="w-full min-w-[55vw] cursor-pointer transition-colors duration-200 hover:border-white">
                     <CardHeader className="flex justify-between">
                       <div className="flex h-96 flex-col justify-between">
                         <CardTitle className="font-chakra-petch text-5xl text-white">
@@ -60,7 +60,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
                   to={`/shop/${brand.slug}`}
                   className="col-span-1"
                 >
-                  <Card className="w-full cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+                  <Card className="w-full cursor-pointer transition-colors duration-200 hover:border-white">
                     <CardHeader className="flex justify-between">
                       <div className="flex h-48 flex-col justify-between">
                         <CardTitle className="font-chakra-petch text-xl text-white">
@@ -79,7 +79,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="my-40">
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+        <Card className="">
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
             <p className="font-chakra-petch text-center text-3xl font-bold text-white">
               Can't find your device?

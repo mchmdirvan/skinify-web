@@ -15,7 +15,7 @@ export default function Cart() {
   return (
     <div className="mx-52 my-20">
       <section>
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+        <Card className="">
           <CardHeader className="grid grid-cols-6">
             <div></div>
             <p className="text-white">Product</p>

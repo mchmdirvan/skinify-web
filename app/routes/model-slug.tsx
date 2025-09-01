@@ -87,7 +87,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
                   key={product.id}
                   to={`/shop/${params.brandSlug}/${params.modelSlug}/${product.slug}`}
                 >
-                  <Card className="cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+                  <Card className="cursor-pointer transition-colors duration-200 hover:border-white">
                     <CardHeader className="flex justify-between">
                       <div className="flex h-48 flex-col justify-between">
                         <CardTitle className="font-chakra-petch text-xl text-white">
@@ -125,7 +125,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
               </p>
             </section>
 
-            <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-14">
+            <Card className="px-14">
               <CardContent className="flex gap-10">
                 <div className="flex flex-col items-center justify-center">
                   <p className="text-8xl font-semibold text-amber-400">4.9</p>
@@ -152,10 +152,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
               <p className="my-5 text-xs text-white">1-3 of 1312 Reviews</p>
               <div className="space-y-4">
                 {reviewsData.map((review) => (
-                  <Card
-                    key={review.content}
-                    className="max-w-2xl border border-zinc-800 bg-linear-to-b from-neutral-900 to-black"
-                  >
+                  <Card key={review.content} className="max-w-2xl">
                     <CardContent>
                       <div className="flex justify-between">
                         <div>
@@ -176,7 +173,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
             </section>
           </TabsContent>
           <TabsContent value="installation-warranty">
-            <Card className="max-w-2xl border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-10 py-14">
+            <Card className="max-w-2xl px-10 py-14">
               <CardHeader>
                 <div className="flex justify-center">
                   <ShieldCheckIcon className="text-amber-400" size={60} />
@@ -214,7 +211,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="my-40">
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+        <Card className="">
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
             <p className="font-chakra-petch text-center text-3xl font-bold text-white">
               Have questions about {products.name} Skins?

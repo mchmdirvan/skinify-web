@@ -34,7 +34,7 @@ export default function BrandSlugRoute({ loaderData }: Route.ComponentProps) {
         <div className="grid min-w-4xl grid-cols-2 gap-8">
           {models.models.map((model) => (
             <Link key={model.id} to={`/shop/${params.brandSlug}/${model.slug}`}>
-              <Card className="cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+              <Card className="cursor-pointer transition-colors duration-200 hover:border-white">
                 <CardHeader className="flex justify-between">
                   <div className="flex h-48 flex-col justify-between">
                     <CardTitle className="font-chakra-petch text-xl text-white">
@@ -51,7 +51,7 @@ export default function BrandSlugRoute({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="my-40">
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+        <Card className="">
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
             <p className="font-chakra-petch text-center text-3xl font-bold text-white">
               Can't find your device?
