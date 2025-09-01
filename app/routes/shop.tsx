@@ -86,7 +86,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section className="my-40">
+      <section className="my-20 lg:my-40">
         <Card className="">
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
             <p className="font-chakra-petch text-center text-xl font-bold text-white md:text-3xl">

@@ -133,10 +133,10 @@ export default function AppLayout() {
     <main className="flex min-h-[100vh] flex-col bg-black">
       <header className="sticky top-4 z-10 mx-5 rounded-xl border border-zinc-800 bg-linear-to-b from-neutral-900/50 to-black/50 backdrop-blur-xs lg:mx-10">
         {/* Desktop Menu */}
-        <nav className="hidden justify-between px-10 py-2 lg:flex">
+        <nav className="hidden justify-between px-10 py-2 lg:flex lg:py-4">
           <Link
             to="/"
-            className="font-audiowide text-4xl text-amber-400 hover:bg-neutral-800 hover:text-amber-400"
+            className="font-audiowide text-4xl text-amber-400 hover:text-amber-400"
           >
             skinify
           </Link>
