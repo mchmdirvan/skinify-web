@@ -15,13 +15,13 @@ export default function Cart() {
   return (
     <div className="mx-52 my-20">
       <section>
-        <Card className="">
+        <Card>
           <CardHeader className="grid grid-cols-6">
             <div></div>
-            <p className="text-white">Product</p>
-            <p className="text-white">Price</p>
-            <p className="text-white">Quantity</p>
-            <p className="text-white">Subtotal</p>
+            <p>Product</p>
+            <p>Price</p>
+            <p>Quantity</p>
+            <p>Subtotal</p>
             <div></div>
           </CardHeader>
 
@@ -31,10 +31,10 @@ export default function Cart() {
               <div>
                 <img src={Iphone16} />
               </div>
-              <p className="font-semibold text-white">iPhone 16 Skins</p>
-              <p className="text-xs text-white">Rp. 129.000</p>
-              <p className="text-xs text-white">2</p>
-              <p className="text-xs text-white">Rp. 258.000</p>
+              <p className="font-semibold">iPhone 16 Skins</p>
+              <p className="text-xs">Rp. 129.000</p>
+              <p className="text-xs">2</p>
+              <p className="text-xs">Rp. 258.000</p>
               <div></div>
             </div>
 
@@ -43,10 +43,10 @@ export default function Cart() {
               <div>
                 <img src={Iphone16} />
               </div>
-              <p className="font-semibold text-white">iPhone 16 Skins</p>
-              <p className="text-xs text-white">Rp. 129.000</p>
-              <p className="text-xs text-white">2</p>
-              <p className="text-xs text-white">Rp. 258.000</p>
+              <p className="font-semibold">iPhone 16 Skins</p>
+              <p className="text-xs">Rp. 129.000</p>
+              <p className="text-xs">2</p>
+              <p className="text-xs">Rp. 258.000</p>
               <div></div>
             </div>
           </CardContent>
@@ -54,7 +54,7 @@ export default function Cart() {
       </section>
 
       <section>
-        <p className="font-chakra-petch my-10 text-center text-white">
+        <p className="font-chakra-petch my-10 text-center">
           Have a coupon/gift code? click here
         </p>
       </section>

@@ -117,7 +117,7 @@ export default function Home() {
   ];
 
   return (
-    <Fragment>
+    <div className="space-y-10">
       <img
         src={HeroImage}
         className="min-h-[80vh] w-full rounded-xl border border-zinc-800 object-cover lg:max-h-[80vh]"
@@ -173,7 +173,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="font-chakra-petch py-5 text-center text-xl text-white md:text-3xl lg:text-5xl">
+        <h2 className="font-chakra-petch py-5 text-center text-xl md:text-3xl lg:text-5xl">
           The ultimate protection for your device.
         </h2>
         <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -200,7 +200,7 @@ export default function Home() {
       <section>
         <Card>
           <CardHeader className="lg:py-10">
-            <CardTitle className="font-chakra-petch text-center text-xl text-white lg:text-5xl">
+            <CardTitle className="font-chakra-petch text-center text-xl lg:text-5xl">
               Our Reviews
             </CardTitle>
           </CardHeader>
@@ -221,14 +221,14 @@ export default function Home() {
                     <Card className="bg-neutral-800">
                       <CardContent className="flex flex-col items-center justify-center gap-4">
                         <p>⭐⭐⭐⭐⭐</p>
-                        <p className="text-center text-xs text-white">
+                        <p className="text-center text-xs">
                           {reviewCard.content}
                         </p>
                         <div>
-                          <p className="text-center text-xs font-bold text-white">
+                          <p className="text-center text-xs font-bold">
                             {reviewCard.author}
                           </p>
-                          <p className="text-center text-xs text-white">
+                          <p className="text-center text-xs">
                             {reviewCard.authorInfo}
                           </p>
                         </div>
@@ -243,6 +243,6 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-    </Fragment>
+    </div>
   );
 }

@@ -77,19 +77,16 @@ export default function Login({ loaderData }: Route.ComponentProps) {
   return (
     <Form method="post" className={cn("flex flex-col gap-6")}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold text-white">Login to your account</h1>
-        <p className="text-sm text-balance text-white">
+        <h1 className="text-2xl font-bold">Login to your account</h1>
+        <p className="text-sm text-balance">
           Enter your email below to login to your account
         </p>
         {error ? <div className="error">{error}</div> : null}
       </div>
       <div className="grid gap-6">
         <div className="grid gap-3">
-          <Label htmlFor="email" className="text-white">
-            Email
-          </Label>
+          <Label htmlFor="email">Email</Label>
           <Input
-            className="text-white"
             id="email"
             type="email"
             name="email"
@@ -99,23 +96,15 @@ export default function Login({ loaderData }: Route.ComponentProps) {
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
-            <Label htmlFor="password" className="text-white">
-              Password
-            </Label>
+            <Label htmlFor="password">Password</Label>
           </div>
-          <Input
-            className="text-white"
-            id="password"
-            type="password"
-            name="password"
-            required
-          />
+          <Input id="password" type="password" name="password" required />
         </div>
         <Button type="submit" className="w-full">
           Login
         </Button>
       </div>
-      <div className="text-center text-sm text-white">
+      <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
         <Link to="/register" className="underline underline-offset-4">
           Sign up

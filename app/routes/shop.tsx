@@ -33,7 +33,7 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
   return (
     <Fragment>
       <section className="relative flex flex-col justify-between gap-10 lg:mt-40 lg:gap-40 xl:flex-row">
-        <h2 className="font-chakra-petch top-40 text-center text-6xl font-bold text-white lg:text-7xl xl:sticky xl:self-start">
+        <h2 className="font-chakra-petch top-40 text-center text-6xl font-bold lg:text-7xl xl:sticky xl:self-start">
           Shop
         </h2>
 
@@ -90,8 +90,8 @@ export default function Shop({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section className="my-20 lg:my-40">
-        <Card className="">
+      <section className="mt-20">
+        <Card>
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
             <CardTitle className="font-chakra-petch text-center text-xl font-bold">
               Can't find your device?
