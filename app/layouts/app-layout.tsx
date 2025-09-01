@@ -16,6 +16,7 @@ import { Fragment } from "react/jsx-runtime";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -218,6 +219,9 @@ export default function AppLayout() {
                       skinify
                     </Link>
                   </SheetTitle>
+                  <SheetDescription>
+                    Protecting the device worldwide, one device at a time.
+                  </SheetDescription>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
                   <Accordion
