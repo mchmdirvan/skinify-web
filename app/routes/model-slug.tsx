@@ -1,5 +1,6 @@
 import type { Route } from "./+types/model-slug";
 import { ShieldCheckIcon } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 import { Link } from "react-router";
 
 import {
@@ -12,8 +13,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { ModelType } from "~/modules/model/type";
 import { Progress } from "~/components/ui/progress";
-import { Fragment } from "react/jsx-runtime";
-import { Separator } from "@radix-ui/react-separator";
 
 export function meta({ loaderData }: Route.MetaArgs) {
   return [
