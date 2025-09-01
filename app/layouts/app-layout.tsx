@@ -209,7 +209,7 @@ export default function AppLayout() {
               <SheetTrigger asChild>
                 <MenuIcon className="size-4" />
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto bg-transparent backdrop-blur-xs">
+              <SheetContent className="overflow-y-auto bg-transparent backdrop-blur-2xl">
                 <SheetHeader>
                   <SheetTitle>
                     <Link
