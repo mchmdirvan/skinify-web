@@ -251,7 +251,7 @@ export default function AppLayout() {
                         <Link
                           key={item.title}
                           to={item.url}
-                          className="text-md font-semibold"
+                          className="text-md font-semibold text-white"
                         >
                           {item.title}
                         </Link>
