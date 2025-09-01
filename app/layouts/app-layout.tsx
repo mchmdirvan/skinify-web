@@ -137,9 +137,9 @@ export default function AppLayout() {
         <nav className="hidden justify-between px-10 py-2 lg:flex lg:py-4">
           <Link
             to="/"
-            className="font-audiowide text-4xl text-amber-400 hover:text-amber-400"
+            className="font-audiowide text-3xl font-bold text-amber-400 hover:text-amber-400"
           >
-            skinify
+            Skinify
           </Link>
 
           <NavigationMenu viewport={false}>
@@ -198,7 +198,7 @@ export default function AppLayout() {
             to="/"
             className="font-audiowide text-xl text-amber-400 hover:bg-neutral-800 hover:text-amber-400"
           >
-            skinify
+            Skinify
           </Link>
 
           <div className="flex items-center justify-center gap-4">
@@ -216,7 +216,7 @@ export default function AppLayout() {
                       to="/"
                       className="font-audiowide text-xl text-amber-400 hover:bg-neutral-800 hover:text-amber-400"
                     >
-                      skinify
+                      Skinify
                     </Link>
                   </SheetTitle>
                   <SheetDescription>
@@ -295,7 +295,7 @@ export default function AppLayout() {
 
           <CardContent className="grid grid-cols-1 gap-8 border-t border-zinc-800 pt-10 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-6">
-              <h3 className="font-chakra-petch text-3xl font-bold text-amber-400">
+              <h3 className="font-audiowide text-3xl font-bold text-amber-400">
                 Skinify®
               </h3>
               <p className="text-xs">
