@@ -96,7 +96,11 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
                           {product.name.split("-")[1]}
                         </CardTitle>
                         <p className="text-xs text-nowrap lg:text-base">
-                          Rp. {product.price}
+                          {new Intl.NumberFormat("id-ID", {
+                            style: "currency",
+                            currency: "IDR",
+                            minimumFractionDigits: 0,
+                          }).format(product.price)}
                         </p>
                       </div>
                       <img
@@ -126,7 +130,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
               <p className="text-center text-xs text-amber-400">
                 How we ensure the authenticity of our reviews
               </p>
-              <p className="text-center text-xs text-white">
+              <p className="text-center text-xs">
                 These reviews are verified purchase reviews and cannot be
                 altered or edited.
               </p>
@@ -146,11 +150,11 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
                 <div>
                   {review.map((rating) => (
                     <div key={rating.stars} className="flex items-center gap-4">
-                      <p className="min-w-[3rem] text-nowrap text-white">
+                      <p className="min-w-[3rem] text-nowrap">
                         {rating.stars} Star
                       </p>
                       <Progress value={rating.percentage} />
-                      <p className="text-white">{rating.percentage}%</p>
+                      <p>{rating.percentage}%</p>
                     </div>
                   ))}
                 </div>
@@ -158,25 +162,21 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
             </Card>
 
             <section>
-              <p className="my-5 text-xs text-white">1-3 of 1312 Reviews</p>
+              <p className="my-5 text-xs">1-3 of 1312 Reviews</p>
               <div className="space-y-4">
                 {reviewsData.map((review) => (
-                  <Card key={review.content} className="max-w-2xl">
+                  <Card key={review.content} className="max-w-2xl lg:max-w-5xl">
                     <CardContent>
                       <div className="flex justify-between">
                         <div>
-                          <p className="font-semibold text-white">
-                            {review.author}
-                          </p>
+                          <p className="font-semibold">{review.author}</p>
                           <p>⭐⭐⭐⭐⭐</p>
                         </div>
-                        <p className="text-xs text-nowrap text-white lg:text-base">
+                        <p className="text-xs text-nowrap lg:text-base">
                           {review.date}
                         </p>
                       </div>
-                      <div className="pt-5 text-xs text-white">
-                        {review.content}
-                      </div>
+                      <div className="pt-5 text-xs">{review.content}</div>
                     </CardContent>
                   </Card>
                 ))}
@@ -190,7 +190,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
                   <ShieldCheckIcon className="text-amber-400" size={60} />
                 </div>
               </CardHeader>
-              <CardContent className="space-y-5 text-center text-xs text-white lg:text-sm">
+              <CardContent className="space-y-5 text-center text-xs lg:text-sm">
                 <p>
                   We are very confident about how easy the skin installation is
                   for iPhone 16. Don’t trust our word, see the reviews on the
@@ -212,7 +212,7 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="md:mx-20 lg:mx-60">
-        <p className="font-chakra-petch text-center text-xs text-white">
+        <p className="font-chakra-petch text-center text-xs lg:text-sm">
           You might think that a iPhone 16 case provides enough protection.
           However, the real threat to your iPhone 16 comes from dust, tiny sand
           particles, or other small debris that get trapped inside the case and
@@ -221,8 +221,8 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
         </p>
       </section>
 
-      <section className="my-20 lg:my-40">
-        <Card className="">
+      <section className="mt-20">
+        <Card>
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
             <CardTitle className="font-chakra-petch text-center text-xl font-bold">
               Have questions about {products.name} Skins?

@@ -29,18 +29,21 @@ export default function ProductSlugRoute({ loaderData }: Route.ComponentProps) {
   const product = loaderData;
 
   const number = product.price;
-  const formatNumber = new Intl.NumberFormat("id-ID").format(number);
+  const formatNumber = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(number);
 
   return (
     <div className="grid grid-cols-2 px-40 py-10">
       <img src={product.imageUrl} className="max-h-[400px]" />
       <Card className="border-none bg-transparent">
         <CardHeader>
-          <CardTitle className="font-chakra-petch text-5xl text-white">
+          <CardTitle className="font-chakra-petch text-5xl">
             {product.name.split("-")[0]}{" "}
           </CardTitle>
-          <CardDescription className="font-chakra-petch text-xl text-white">
-            {product.name.split("-")[1]} - IDR {formatNumber}
+          <CardDescription className="font-chakra-petch text-xl">
+            {product.name.split("-")[1]} - {formatNumber}
           </CardDescription>
         </CardHeader>
         <CardContent>
