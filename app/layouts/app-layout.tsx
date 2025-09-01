@@ -168,7 +168,7 @@ export default function AppLayout() {
                   {!item.items && (
                     <NavigationMenuLink
                       asChild
-                      className="hover: hover:bg-neutral-800"
+                      className="hover:bg-neutral-800 hover:text-white"
                     >
                       <Link to={item.url}>{item.title}</Link>
                     </NavigationMenuLink>
