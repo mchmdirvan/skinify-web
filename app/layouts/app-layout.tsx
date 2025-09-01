@@ -130,7 +130,7 @@ export default function AppLayout() {
   ];
 
   return (
-    <main className="flex min-h-[100vh] flex-col bg-black">
+    <main className="flex min-h-[100vh] flex-col bg-black text-white">
       <header className="sticky top-4 z-10 mx-5 rounded-xl border border-zinc-800 bg-linear-to-b from-neutral-900/50 to-black/50 backdrop-blur-xs lg:mx-10">
         {/* Desktop Menu */}
         <nav className="hidden justify-between px-10 py-2 lg:flex lg:py-4">
@@ -147,7 +147,7 @@ export default function AppLayout() {
                 <NavigationMenuItem key={item.title}>
                   {item.items && (
                     <Fragment>
-                      <NavigationMenuTrigger className="bg-transparent text-white">
+                      <NavigationMenuTrigger className="bg-transparent">
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -167,7 +167,7 @@ export default function AppLayout() {
                   {!item.items && (
                     <NavigationMenuLink
                       asChild
-                      className="text-white hover:bg-neutral-800 hover:text-white"
+                      className="hover: hover:bg-neutral-800"
                     >
                       <Link to={item.url}>{item.title}</Link>
                     </NavigationMenuLink>
@@ -179,7 +179,7 @@ export default function AppLayout() {
                 <NavigationMenuItem key={item.url}>
                   <NavigationMenuLink
                     asChild
-                    className="text-white hover:bg-neutral-800 hover:text-white"
+                    className="hover: hover:bg-neutral-800"
                   >
                     <Link to={item.url}>
                       <item.Icon />
@@ -202,11 +202,11 @@ export default function AppLayout() {
 
           <div className="flex items-center justify-center gap-4">
             <Link to="/cart">
-              <ShoppingCartIcon className="size-4 text-white" />
+              <ShoppingCartIcon className="size-4" />
             </Link>
             <Sheet>
               <SheetTrigger asChild>
-                <MenuIcon className="size-4 text-white" />
+                <MenuIcon className="size-4" />
               </SheetTrigger>
               <SheetContent className="overflow-y-auto bg-transparent backdrop-blur-xs">
                 <SheetHeader>
@@ -233,10 +233,10 @@ export default function AppLayout() {
                             value={item.title}
                             className="border-b-0"
                           >
-                            <AccordionTrigger className="text-md py-0 font-semibold text-white hover:no-underline">
+                            <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
                               {item.title}
                             </AccordionTrigger>
-                            <AccordionContent className="mt-2 flex flex-col gap-2 text-white">
+                            <AccordionContent className="mt-2 flex flex-col gap-2">
                               {item.items?.map((subItem) => (
                                 <Link key={subItem.title} to={subItem.url}>
                                   {subItem.title}
@@ -251,7 +251,7 @@ export default function AppLayout() {
                         <Link
                           key={item.title}
                           to={item.url}
-                          className="text-md font-semibold text-white"
+                          className="text-md font-semibold"
                         >
                           {item.title}
                         </Link>
@@ -265,7 +265,7 @@ export default function AppLayout() {
         </div>
       </header>
 
-      <main className="mx-5 mt-10 flex-1 text-white lg:mx-10">
+      <main className="mx-5 mt-10 flex-1 lg:mx-10">
         <Outlet />
       </main>
 
@@ -273,7 +273,7 @@ export default function AppLayout() {
         <Card className="px-4 py-12 sm:px-6 lg:px-8">
           <CardTitle className="grid gap-6 pb-8 lg:grid-cols-2">
             <div>
-              <h2 className="font-chakra-petch text-2xl font-bold text-white">
+              <h2 className="font-chakra-petch text-2xl font-bold">
                 Get exclusive offers
               </h2>
               <p className="mt-2 text-xs text-gray-400 lg:text-base">
@@ -283,7 +283,7 @@ export default function AppLayout() {
             </div>
             <Button
               variant="outline"
-              className="w-full rounded-full border-zinc-800 bg-neutral-900 py-6 text-xs text-white lg:text-base"
+              className="w-full rounded-full border-zinc-800 bg-neutral-900 py-6 text-xs lg:text-base"
             >
               SUBSCRIBE TO SKINIFY NEWSLETTER
             </Button>
@@ -294,19 +294,19 @@ export default function AppLayout() {
               <h3 className="font-chakra-petch text-3xl font-bold text-amber-400">
                 Skinify®
               </h3>
-              <p className="text-xs text-white">
+              <p className="text-xs">
                 Protecting the device worldwide, one device at a time.
               </p>
             </div>
 
             <div>
-              <h4 className="mb-2 font-semibold text-white">Customers</h4>
+              <h4 className="mb-2 font-semibold">Customers</h4>
               <ul className="space-y-1">
                 {customerLinks.map((link) => (
                   <li key={link.text}>
                     <Link
                       to={link.to}
-                      className="text-xs text-white transition-colors hover:text-amber-400"
+                      className="text-xs transition-colors hover:text-amber-400"
                     >
                       {link.text}
                     </Link>
@@ -316,13 +316,13 @@ export default function AppLayout() {
             </div>
 
             <div>
-              <h4 className="mb-2 font-semibold text-white">Extras</h4>
+              <h4 className="mb-2 font-semibold">Extras</h4>
               <ul className="space-y-1">
                 {extrasLinks.map((link) => (
                   <li key={link.text}>
                     <Link
                       to={link.to}
-                      className="text-xs text-white transition-colors hover:text-amber-400"
+                      className="text-xs transition-colors hover:text-amber-400"
                     >
                       {link.text}
                     </Link>
@@ -332,7 +332,7 @@ export default function AppLayout() {
             </div>
 
             <div>
-              <h4 className="mb-4 font-semibold text-white">Secure Payment</h4>
+              <h4 className="mb-4 font-semibold">Secure Payment</h4>
               <div className="grid grid-cols-3 gap-3"></div>
             </div>
           </CardContent>
