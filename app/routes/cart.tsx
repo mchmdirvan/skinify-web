@@ -12,16 +12,69 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Cart() {
+  const cartData = [
+    {
+      head: "Product",
+      data: "  iPhone 16 Skins",
+    },
+    {
+      head: "Price",
+      data: "Rp. 129.000",
+    },
+    {
+      head: "Quantity",
+      data: "2",
+    },
+    {
+      head: "Subtotal",
+      data: "Rp. 258.000",
+    },
+  ];
   return (
-    <div className="mx-52 my-20">
+    <div className="lg:mx-52 lg:my-20">
       <section>
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+        <Card className="lg:hidden">
+          <CardContent>
+            <div className="flex justify-center border-b border-neutral-800 py-5">
+              <img src={Iphone16} className="w-[200px]" />
+            </div>
+            {cartData.map((cart) => (
+              <div
+                key={cart.head}
+                className="grid grid-cols-2 border-b border-neutral-800 py-5"
+              >
+                <p className="text-sm">{cart.head}</p>
+                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
+              </div>
+            ))}
+            <Button variant="destructive" className="my-4 w-full">
+              DELETE
+            </Button>
+
+            <div className="flex justify-center border-b border-neutral-800 py-5">
+              <img src={Iphone16} className="w-[200px]" />
+            </div>
+            {cartData.map((cart) => (
+              <div
+                key={cart.head}
+                className="grid grid-cols-2 border-b border-neutral-800 py-5"
+              >
+                <p className="text-sm">{cart.head}</p>
+                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
+              </div>
+            ))}
+            <Button variant="destructive" className="my-4 w-full">
+              DELETE
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card className="hidden lg:block">
           <CardHeader className="grid grid-cols-6">
             <div></div>
-            <p className="text-white">Product</p>
-            <p className="text-white">Price</p>
-            <p className="text-white">Quantity</p>
-            <p className="text-white">Subtotal</p>
+            {cartData.map((cart) => (
+              <p key={cart.head}>{cart.head}</p>
+            ))}
             <div></div>
           </CardHeader>
 
@@ -31,10 +84,11 @@ export default function Cart() {
               <div>
                 <img src={Iphone16} />
               </div>
-              <p className="font-semibold text-white">iPhone 16 Skins</p>
-              <p className="text-xs text-white">Rp. 129.000</p>
-              <p className="text-xs text-white">2</p>
-              <p className="text-xs text-white">Rp. 258.000</p>
+              {cartData.map((cart) => (
+                <p key={cart.head} className="text-xs">
+                  {cart.data}
+                </p>
+              ))}
               <div></div>
             </div>
 
@@ -43,10 +97,11 @@ export default function Cart() {
               <div>
                 <img src={Iphone16} />
               </div>
-              <p className="font-semibold text-white">iPhone 16 Skins</p>
-              <p className="text-xs text-white">Rp. 129.000</p>
-              <p className="text-xs text-white">2</p>
-              <p className="text-xs text-white">Rp. 258.000</p>
+              {cartData.map((cart) => (
+                <p key={cart.head} className="text-xs">
+                  {cart.data}
+                </p>
+              ))}
               <div></div>
             </div>
           </CardContent>
@@ -54,7 +109,7 @@ export default function Cart() {
       </section>
 
       <section>
-        <p className="font-chakra-petch my-10 text-center text-white">
+        <p className="font-chakra-petch my-10 text-center hover:underline">
           Have a coupon/gift code? click here
         </p>
       </section>

@@ -50,18 +50,15 @@ export default function Register() {
   return (
     <Form method="post" className={cn("flex flex-col gap-6")}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold text-white">Sign Up</h1>
-        <p className="text-sm text-balance text-white">
+        <h1 className="text-2xl font-bold">Sign Up</h1>
+        <p className="text-sm text-balance">
           Create your account to start customizing your phone skins
         </p>
       </div>
       <div className="grid gap-6">
         <div className="grid gap-3">
-          <Label htmlFor="fullName" className="text-white">
-            Fullname
-          </Label>
+          <Label htmlFor="fullName">Fullname</Label>
           <Input
-            className="text-white"
             name="fullName"
             id="fullName"
             placeholder="John Doe"
@@ -69,23 +66,12 @@ export default function Register() {
           />
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="username" className="text-white">
-            Username
-          </Label>
-          <Input
-            className="text-white"
-            id="username"
-            name="username"
-            placeholder="johndoe"
-            required
-          />
+          <Label htmlFor="username">Username</Label>
+          <Input id="username" name="username" placeholder="johndoe" required />
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="email" className="text-white">
-            Email
-          </Label>
+          <Label htmlFor="email">Email</Label>
           <Input
-            className="text-white"
             id="email"
             type="email"
             name="email"
@@ -95,23 +81,15 @@ export default function Register() {
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
-            <Label htmlFor="password" className="text-white">
-              Password
-            </Label>
+            <Label htmlFor="password">Password</Label>
           </div>
-          <Input
-            className="text-white"
-            id="password"
-            type="password"
-            name="password"
-            required
-          />
+          <Input id="password" type="password" name="password" required />
         </div>
         <Button type="submit" className="w-full">
           Login
         </Button>
       </div>
-      <div className="text-center text-sm text-white">
+      <div className="text-center text-sm">
         <p>By clicking ‘Register’, you agree to the:</p>
         <div className="text-xs">
           <a href="#" className="underline underline-offset-4">

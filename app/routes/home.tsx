@@ -6,15 +6,14 @@ import {
   ShieldCheckIcon,
   ShieldUserIcon,
 } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import type { BrandType } from "~/modules/brand/type";
-
-import HeroImage from "/hero.jpg";
-import QualityR from "/quality-r.jpg";
 import QualityL from "/quality-l.jpg";
+import QualityR from "/quality-r.jpg";
+import HeroImage from "/hero.jpg";
+
 import {
   Carousel,
   CarouselContent,
@@ -23,6 +22,7 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import { Button } from "~/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -117,20 +117,20 @@ export default function Home() {
   ];
 
   return (
-    <div className="mx-10 mt-10 min-h-[200vh] space-y-10">
+    <div className="space-y-10">
       <img
         src={HeroImage}
-        className="max-h-[80vh] w-full rounded-xl border border-zinc-800 object-cover"
+        className="min-h-[80vh] w-full rounded-xl border border-zinc-800 object-cover lg:max-h-[80vh]"
       />
 
       <section>
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
-          <CardHeader className="flex items-center justify-between">
-            <CardTitle className="font-chakra-petch text-white">
+        <Card>
+          <CardHeader className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <CardTitle className="font-chakra-petch text-xs lg:text-base">
               The first and the only skin brand offering both an Installation
               Guarantee and 30-Day Money Back Guarantee.
             </CardTitle>
-            <Button className="min-w-sm rounded-md bg-amber-400 hover:bg-white hover:text-neutral-800">
+            <Button className="min-w-full rounded-md bg-amber-400 hover:bg-white hover:text-neutral-800 md:min-w-sm">
               <Link to="/shop" className="w-full">
                 SHOP ALL
               </Link>
@@ -139,20 +139,20 @@ export default function Home() {
         </Card>
       </section>
 
-      <section className="grid grid-cols-2 gap-8">
+      <section className="grid gap-8 md:grid-cols-2">
         <div className="space-y-8">
-          <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5 py-14">
+          <Card className="py-14">
             <CardHeader>
-              <CardTitle className="font-chakra-petch text-5xl text-amber-400">
+              <CardTitle className="font-chakra-petch text-2xl text-amber-400 lg:text-5xl">
                 Made with Quality
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2">
-              <p className="text-justify text-sm text-white">
+            <CardContent className="space-y-2 text-justify text-xs lg:text-sm">
+              <p>
                 All products are made with an obsessive attention to detail in
                 order to ensure the highest quality possible.
               </p>
-              <p className="text-justify text-sm text-white">
+              <p>
                 No aspect is ever overlooked – from the sourcing of the finest
                 materials to the most minute details of creation.
               </p>
@@ -164,30 +164,30 @@ export default function Home() {
             className="max-h-[60vh] min-w-full rounded-xl border border-zinc-800 object-cover"
           />
         </div>
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black px-5">
-          <img src={QualityR} className="max-h-[90vh] rounded-md" />
+        <Card>
+          <img
+            src={QualityR}
+            className="min-h-full rounded-xl object-cover px-5 xl:max-h-[90vh]"
+          />
         </Card>
       </section>
 
       <section>
-        <h2 className="font-chakra-petch py-5 text-center text-5xl text-white">
+        <h2 className="font-chakra-petch py-5 text-center text-xl md:text-3xl lg:text-5xl">
           The ultimate protection for your device.
         </h2>
-        <div className="mt-10 grid grid-cols-3 gap-8">
+        <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featureCards.map((featureCard) => {
             return (
-              <Card
-                className="max-w-md border border-zinc-800 bg-linear-to-b from-neutral-900 to-black"
-                key={featureCard.title}
-              >
+              <Card className="max-w-md" key={featureCard.title}>
                 <CardHeader className="mx-5 flex min-h-[30vh] items-center justify-center rounded-2xl bg-radial-[at_100%_10%] from-black to-amber-500 to-250%">
                   <featureCard.icon className="text-yellow-500" size={60} />
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <CardTitle className="font-chakra-petch text-xl text-white">
+                  <CardTitle className="font-chakra-petch text-xl">
                     {featureCard.title}
                   </CardTitle>
-                  <p className="text-justify text-xs text-white">
+                  <p className="text-justify text-xs">
                     {featureCard.description}
                   </p>
                 </CardContent>
@@ -198,19 +198,19 @@ export default function Home() {
       </section>
 
       <section>
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
-          <CardHeader className="py-10">
-            <CardTitle className="font-chakra-petch text-center text-5xl text-white">
+        <Card>
+          <CardHeader className="lg:py-10">
+            <CardTitle className="font-chakra-petch text-center text-xl lg:text-5xl">
               Our Reviews
             </CardTitle>
           </CardHeader>
 
-          <CardContent className="px-20 pb-10">
+          <CardContent className="px-8 md:px-20 lg:pb-10">
             <Carousel
               opts={{
                 align: "start",
               }}
-              className="w-full"
+              className="w-full text-black"
             >
               <CarouselContent>
                 {reviewCards.map((reviewCard, index) => (
@@ -221,14 +221,14 @@ export default function Home() {
                     <Card className="bg-neutral-800">
                       <CardContent className="flex flex-col items-center justify-center gap-4">
                         <p>⭐⭐⭐⭐⭐</p>
-                        <p className="text-center text-xs text-white">
+                        <p className="text-center text-xs">
                           {reviewCard.content}
                         </p>
                         <div>
-                          <p className="text-center text-xs font-bold text-white">
+                          <p className="text-center text-xs font-bold">
                             {reviewCard.author}
                           </p>
-                          <p className="text-center text-xs text-white">
+                          <p className="text-center text-xs">
                             {reviewCard.authorInfo}
                           </p>
                         </div>

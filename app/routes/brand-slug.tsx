@@ -1,8 +1,14 @@
 import type { Route } from "./+types/brand-slug";
-import { Link } from "react-router";
 import { Fragment } from "react/jsx-runtime";
+import { Link } from "react-router";
 
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 import type { BrandType } from "~/modules/brand/type";
 
 export function meta({ loaderData }: Route.MetaArgs) {
@@ -25,24 +31,31 @@ export default function BrandSlugRoute({ loaderData }: Route.ComponentProps) {
   const { params, models } = loaderData;
 
   return (
-    <div className="mx-10 my-10">
-      <section className="relative mt-40 flex justify-between gap-10">
-        <h2 className="font-chakra-petch sticky top-40 self-start text-7xl font-bold text-nowrap text-white">
+    <Fragment>
+      <section className="relative flex flex-col justify-between gap-10 lg:mt-40 lg:gap-40 xl:flex-row">
+        <h2 className="font-chakra-petch top-40 text-center text-6xl font-bold lg:text-7xl xl:sticky xl:self-start">
           {models.name} Skins
         </h2>
 
-        <div className="grid min-w-4xl grid-cols-2 gap-8">
+        <div className="grid gap-4 md:grid-cols-2 md:gap-8">
           {models.models.map((model) => (
-            <Link key={model.id} to={`/shop/${params.brandSlug}/${model.slug}`}>
-              <Card className="cursor-pointer border border-zinc-800 bg-linear-to-b from-neutral-900 to-black transition-colors duration-200 hover:border-white">
+            <Link
+              key={model.id}
+              to={`/shop/${params.brandSlug}/${model.slug}`}
+              className="col-span-2 md:col-span-1"
+            >
+              <Card className="w-full cursor-pointer transition-colors duration-200 hover:border-white xl:min-w-sm">
                 <CardHeader className="flex justify-between">
-                  <div className="flex h-48 flex-col justify-between">
-                    <CardTitle className="font-chakra-petch text-xl text-white">
+                  <div className="flex h-20 flex-col justify-between lg:h-48">
+                    <CardTitle className="font-chakra-petch text-xl">
                       {model.name}
                     </CardTitle>
-                    <p className="text-white">Premium Skins</p>
+                    <p className="text-xs">Premium Skins</p>
                   </div>
-                  <img src={model.imageUrl} className="w-[200px]" />
+                  <img
+                    src={model.imageUrl}
+                    className="w-[100px] lg:w-[200px]"
+                  />
                 </CardHeader>
               </Card>
             </Link>
@@ -50,13 +63,13 @@ export default function BrandSlugRoute({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section className="my-40">
-        <Card className="border border-zinc-800 bg-linear-to-b from-neutral-900 to-black">
+      <section className="mt-20">
+        <Card>
           <CardContent className="flex min-h-[20vh] flex-col justify-center gap-4">
-            <p className="font-chakra-petch text-center text-3xl font-bold text-white">
+            <CardTitle className="font-chakra-petch text-center text-xl font-bold">
               Can't find your device?
-            </p>
-            <div className="flex justify-center gap-1 text-white">
+            </CardTitle>
+            <CardDescription className="flex justify-center gap-1 text-xs text-nowrap">
               <a href="tel:+6289755556000" className="hover:underline">
                 +62 897 555 6000
               </a>
@@ -64,10 +77,10 @@ export default function BrandSlugRoute({ loaderData }: Route.ComponentProps) {
               <a href="mailto:skinify@skinify.com" className="hover:underline">
                 skinify@skinify.com
               </a>
-            </div>
+            </CardDescription>
           </CardContent>
         </Card>
       </section>
-    </div>
+    </Fragment>
   );
 }
