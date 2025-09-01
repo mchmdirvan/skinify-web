@@ -6,9 +6,9 @@ import {
   ShieldCheckIcon,
   ShieldUserIcon,
 } from "lucide-react";
-import { Fragment } from "react/jsx-runtime";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
+import Autoplay from "embla-carousel-autoplay";
 
 import QualityL from "/quality-l.jpg";
 import QualityR from "/quality-r.jpg";
@@ -209,7 +209,13 @@ export default function Home() {
             <Carousel
               opts={{
                 align: "start",
+                loop: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 2000,
+                }),
+              ]}
               className="w-full text-black"
             >
               <CarouselContent>
