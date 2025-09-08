@@ -1,8 +1,11 @@
-import { Card, CardContent, CardHeader } from "~/components/ui/card";
-
-import Iphone16 from "/iPhone-16.png";
-import { Button } from "~/components/ui/button";
+import { destroySession, getSession } from "~/session.server";
 import type { Route } from "./+types/cart";
+import { TrashIcon } from "lucide-react";
+import { redirect } from "react-router";
+
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
+import type { Cart } from "~/modules/cart/schema";
+import { Button } from "~/components/ui/button";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,101 +14,120 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Cart() {
-  const cartData = [
+export async function loader({ request }: Route.LoaderArgs) {
+  const session = await getSession(request.headers.get("Cookie"));
+
+  if (!session.has("token")) {
+    return redirect("/login");
+  }
+
+  const token = session.get("token");
+
+  const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/cart`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    session.flash("error", "Failed to get cart");
+    return redirect("/login", {
+      headers: { "Set-Cookie": await destroySession(session) },
+    });
+  }
+
+  const cart: Cart = await response.json();
+
+  return cart;
+}
+
+export default function Cart({ loaderData }: Route.ComponentProps) {
+  const carts = loaderData;
+
+  const table = [
     {
       head: "Product",
-      data: "  iPhone 16 Skins",
     },
     {
       head: "Price",
-      data: "Rp. 129.000",
     },
     {
       head: "Quantity",
-      data: "2",
     },
     {
       head: "Subtotal",
-      data: "Rp. 258.000",
     },
   ];
+
   return (
     <div className="lg:mx-52 lg:my-20">
       <section>
-        <Card className="lg:hidden">
-          <CardContent>
-            <div className="flex justify-center border-b border-neutral-800 py-5">
-              <img src={Iphone16} className="w-[200px]" />
-            </div>
-            {cartData.map((cart) => (
-              <div
-                key={cart.head}
-                className="grid grid-cols-2 border-b border-neutral-800 py-5"
-              >
-                <p className="text-sm">{cart.head}</p>
-                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
-              </div>
-            ))}
-            <Button variant="destructive" className="my-4 w-full">
-              DELETE
-            </Button>
-
-            <div className="flex justify-center border-b border-neutral-800 py-5">
-              <img src={Iphone16} className="w-[200px]" />
-            </div>
-            {cartData.map((cart) => (
-              <div
-                key={cart.head}
-                className="grid grid-cols-2 border-b border-neutral-800 py-5"
-              >
-                <p className="text-sm">{cart.head}</p>
-                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
-              </div>
-            ))}
-            <Button variant="destructive" className="my-4 w-full">
-              DELETE
-            </Button>
-          </CardContent>
-        </Card>
-
+        {/* Desktop */}
         <Card className="hidden lg:block">
           <CardHeader className="grid grid-cols-6">
             <div></div>
-            {cartData.map((cart) => (
-              <p key={cart.head}>{cart.head}</p>
+            {table.map((item) => (
+              <p key={item.head}>{item.head}</p>
             ))}
             <div></div>
           </CardHeader>
 
-          <CardContent>
-            <div className="mx-10 my-5 border border-t border-neutral-800"></div>
-            <div className="grid grid-cols-6 items-center">
-              <div>
-                <img src={Iphone16} />
-              </div>
-              {cartData.map((cart) => (
-                <p key={cart.head} className="text-xs">
-                  {cart.data}
-                </p>
-              ))}
-              <div></div>
-            </div>
-
-            <div className="mx-10 my-5 border border-t border-neutral-800"></div>
-            <div className="grid grid-cols-6 items-center">
-              <div>
-                <img src={Iphone16} />
-              </div>
-              {cartData.map((cart) => (
-                <p key={cart.head} className="text-xs">
-                  {cart.data}
-                </p>
-              ))}
-              <div></div>
-            </div>
-          </CardContent>
+          {carts.items.map((cart) => {
+            return (
+              <CardContent key={cart.product.id}>
+                <div className="mx-10 my-5 border border-t border-neutral-800"></div>
+                <div className="grid grid-cols-6 items-center">
+                  <img src={cart.product.imageUrl} className="w-[200px]" />
+                  <div>{cart.product.name.split("-")[0]}</div>
+                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                  <div>{cart.quantity}</div>
+                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                  <Button variant="destructive" size="icon" className="">
+                    <TrashIcon />
+                  </Button>
+                </div>
+              </CardContent>
+            );
+          })}
         </Card>
+
+        {/* Mobile */}
+        {/* <Card className="lg:hidden">
+          <CardContent>
+            <div className="flex justify-center border-b border-neutral-800 py-5">
+              <img src={Iphone16} className="w-[200px]" />
+            </div>
+            {carts.items.map((cart) => (
+              <div
+                key={cart.head}
+                className="grid grid-cols-2 border-b border-neutral-800 py-5"
+              >
+                <p className="text-sm">{cart.head}</p>
+                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
+              </div>
+            ))}
+            <Button variant="destructive" className="my-4 w-full">
+              DELETE
+            </Button>
+
+            <div className="flex justify-center border-b border-neutral-800 py-5">
+              <img src={Iphone16} className="w-[200px]" />
+            </div>
+            {cartData.map((cart) => (
+              <div
+                key={cart.head}
+                className="grid grid-cols-2 border-b border-neutral-800 py-5"
+              >
+                <p className="text-sm">{cart.head}</p>
+                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
+              </div>
+            ))}
+            <Button variant="destructive" className="my-4 w-full">
+              DELETE
+            </Button>
+          </CardContent>
+        </Card> */}
       </section>
 
       <section>
