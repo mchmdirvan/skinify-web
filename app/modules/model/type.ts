@@ -1,4 +1,4 @@
-import type { ProductType } from "../products/type";
+import type { Product } from "../products/schema";
 
 export type ModelType = {
   id: string;
@@ -8,5 +8,5 @@ export type ModelType = {
   brandSlug: string;
   createdAt: string;
   updatedAt: string;
-  products: ProductType[];
+  products: Product[];
 };

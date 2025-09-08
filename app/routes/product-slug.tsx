@@ -1,4 +1,3 @@
-import type { ProductType } from "~/modules/products/type";
 import type { Route } from "./+types/product-slug";
 import {
   Card,
@@ -8,6 +7,7 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
+import type { Product } from "~/modules/products/schema";
 
 export function meta({ loaderData }: Route.MetaArgs) {
   return [
@@ -20,7 +20,7 @@ export async function loader({ params }: Route.LoaderArgs) {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_API_URL}/products/${params.productSlug}`,
   );
-  const product: ProductType = await response.json();
+  const product: Product = await response.json();
 
   return product;
 }
