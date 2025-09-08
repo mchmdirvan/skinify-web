@@ -21,7 +21,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
   ];
 }
 
-export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_API_URL}/models/${params.modelSlug}`,
   );
