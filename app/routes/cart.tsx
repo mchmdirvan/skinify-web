@@ -100,20 +100,27 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
                 <div className="flex justify-center border-b border-neutral-800 py-5">
                   <img src={cart.product.imageUrl} className="w-[200px]" />
                 </div>
-                {table.map((item) => (
-                  <div
-                    key={item.head}
-                    className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap"
-                  >
-                    <p className="text-sm">{item.head}</p>
-                    <div>
-                      <div>{cart.product.name.split("-")[0]}</div>
-                      <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
-                      <div>{cart.quantity}</div>
-                      <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
-                    </div>
-                  </div>
-                ))}
+
+                <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
+                  <p className="text-sm">Product</p>
+                  <div>{cart.product.name.split("-")[0]}</div>
+                </div>
+
+                <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
+                  <p className="text-sm">Price</p>
+                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                </div>
+
+                <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
+                  <p className="text-sm">Quantity</p>
+                  <div>{cart.quantity}</div>
+                </div>
+
+                <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
+                  <p className="text-sm">Subtotal</p>
+                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                </div>
+
                 <Button variant="destructive" className="my-4 w-full">
                   DELETE
                 </Button>
