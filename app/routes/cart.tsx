@@ -93,41 +93,34 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
         </Card>
 
         {/* Mobile */}
-        {/* <Card className="lg:hidden">
-          <CardContent>
-            <div className="flex justify-center border-b border-neutral-800 py-5">
-              <img src={Iphone16} className="w-[200px]" />
-            </div>
-            {carts.items.map((cart) => (
-              <div
-                key={cart.head}
-                className="grid grid-cols-2 border-b border-neutral-800 py-5"
-              >
-                <p className="text-sm">{cart.head}</p>
-                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
-              </div>
-            ))}
-            <Button variant="destructive" className="my-4 w-full">
-              DELETE
-            </Button>
-
-            <div className="flex justify-center border-b border-neutral-800 py-5">
-              <img src={Iphone16} className="w-[200px]" />
-            </div>
-            {cartData.map((cart) => (
-              <div
-                key={cart.head}
-                className="grid grid-cols-2 border-b border-neutral-800 py-5"
-              >
-                <p className="text-sm">{cart.head}</p>
-                <p className="text-sm font-semibold text-nowrap">{cart.data}</p>
-              </div>
-            ))}
-            <Button variant="destructive" className="my-4 w-full">
-              DELETE
-            </Button>
-          </CardContent>
-        </Card> */}
+        <Card className="lg:hidden">
+          {carts.items.map((cart) => {
+            return (
+              <CardContent key={cart.product.id}>
+                <div className="flex justify-center border-b border-neutral-800 py-5">
+                  <img src={cart.product.imageUrl} className="w-[200px]" />
+                </div>
+                {table.map((item) => (
+                  <div
+                    key={item.head}
+                    className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap"
+                  >
+                    <p className="text-sm">{item.head}</p>
+                    <div>
+                      <div>{cart.product.name.split("-")[0]}</div>
+                      <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                      <div>{cart.quantity}</div>
+                      <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                    </div>
+                  </div>
+                ))}
+                <Button variant="destructive" className="my-4 w-full">
+                  DELETE
+                </Button>
+              </CardContent>
+            );
+          })}
+        </Card>
       </section>
 
       <section>
