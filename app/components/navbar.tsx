@@ -191,6 +191,11 @@ export default function Navbar({ userData }: any) {
                           Dashboard
                         </Link>
                       </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link className="hover:cursor-pointer" to="/logout">
+                          Logout
+                        </Link>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </NavigationMenuLink>
@@ -228,6 +233,11 @@ export default function Navbar({ userData }: any) {
                   <DropdownMenuItem asChild>
                     <Link className="hover:cursor-pointer" to="/dashboard">
                       Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link className="hover:cursor-pointer" to="/logout">
+                      Logout
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
