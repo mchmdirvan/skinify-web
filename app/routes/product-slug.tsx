@@ -8,6 +8,7 @@ import {
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import type { Product } from "~/modules/products/schema";
+import { Form } from "react-router";
 
 export function meta({ loaderData }: Route.MetaArgs) {
   return [
@@ -47,9 +48,16 @@ export default function ProductSlugRoute({ loaderData }: Route.ComponentProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button className="min-w-full border border-zinc-500 bg-yellow-500 py-5">
-            ADD TO CART
-          </Button>
+          <Form method="post">
+            <input type="hidden" name="productId" defaultValue={product.id} />
+            <input type="hidden" name="quantity" defaultValue={1} />
+            <Button
+              type="submit"
+              className="min-w-full border border-zinc-500 bg-yellow-500 py-5"
+            >
+              ADD TO CART
+            </Button>
+          </Form>
         </CardContent>
       </Card>
     </div>
