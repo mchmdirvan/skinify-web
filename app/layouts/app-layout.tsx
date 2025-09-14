@@ -25,7 +25,7 @@ export default function AppLayout({ loaderData }: Route.ComponentProps) {
 
   return (
     <main className="flex min-h-[100vh] flex-col bg-black text-white">
-      <Navbar userData={loaderData} />
+      <Navbar userData={userData} />
 
       <main className="mx-5 mt-10 flex-1 lg:mx-10">
         <Outlet />

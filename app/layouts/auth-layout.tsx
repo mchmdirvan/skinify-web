@@ -19,7 +19,7 @@ export default function AuthLayout() {
           </div>
         </div>
       </div>
-      <div className="bg-muted relative hidden lg:block">
+      <div className="relative hidden bg-black lg:block">
         <img
           src={Auth}
           alt="Image"
