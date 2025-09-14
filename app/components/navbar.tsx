@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 
 import { Fragment } from "react/jsx-runtime";
-import { Link } from "react-router";
+import { Form, Link } from "react-router";
 
 import {
   NavigationMenu,
@@ -38,6 +38,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
+import { cn } from "~/lib/utils";
+import { Button } from "./ui/button";
 
 export default function Navbar({ userData }: any) {
   // Types
@@ -192,9 +194,9 @@ export default function Navbar({ userData }: any) {
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link className="hover:cursor-pointer" to="/logout">
-                          Logout
-                        </Link>
+                        <Form method="post">
+                          <Button type="submit">Logout</Button>
+                        </Form>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

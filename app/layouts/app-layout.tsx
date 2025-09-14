@@ -1,8 +1,8 @@
 import type { Route } from "./+types/app-layout";
-import { Outlet } from "react-router";
+import { Outlet, redirect } from "react-router";
 
 import type { User } from "~/modules/user/type";
-import { getSession } from "~/session.server";
+import { destroySession, getSession } from "~/session.server";
 
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
@@ -18,6 +18,16 @@ export async function loader({ request }: Route.LoaderArgs) {
   const userData: User = await response.json();
 
   return { userData };
+}
+
+export async function action({ request }: Route.ActionArgs) {
+  const session = await getSession(request.headers.get("Cookie"));
+
+  return redirect("/", {
+    headers: {
+      "Set-Cookie": await destroySession(session),
+    },
+  });
 }
 
 export default function AppLayout({ loaderData }: Route.ComponentProps) {
