@@ -1,4 +1,9 @@
-import { MenuIcon, SearchIcon, ShoppingCartIcon } from "lucide-react";
+import {
+  CircleUserRoundIcon,
+  MenuIcon,
+  SearchIcon,
+  ShoppingCartIcon,
+} from "lucide-react";
 import { Link, Outlet } from "react-router";
 
 import { Card, CardContent, CardTitle } from "~/components/ui/card";
@@ -28,7 +33,39 @@ import {
   AccordionTrigger,
 } from "~/components/ui/accordion";
 
-export default function AppLayout() {
+import type { Route } from "./+types/app-layout";
+import type { User } from "~/modules/user/type";
+import { getSession } from "~/session.server";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "~/components/ui/hover-card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const session = await getSession(request.headers.get("Cookie"));
+  const token = session.get("token");
+  const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/auth/me`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const userData: User = await response.json();
+
+  return { userData };
+}
+
+export default function AppLayout({ loaderData }: Route.ComponentProps) {
+  const { userData } = loaderData;
+  console.log(userData);
   // Types
   type MenuItemTypes = {
     title: string;
@@ -165,7 +202,7 @@ export default function AppLayout() {
                     </Fragment>
                   )}
 
-                  {!item.items && (
+                  {!item.items && !userData.id && (
                     <NavigationMenuLink
                       asChild
                       className="hover:bg-neutral-800 hover:text-white"
@@ -178,16 +215,41 @@ export default function AppLayout() {
 
               {menuIconItem.map((item) => (
                 <NavigationMenuItem key={item.url}>
-                  <NavigationMenuLink
-                    asChild
-                    className="hover: hover:bg-neutral-800"
-                  >
+                  <NavigationMenuLink asChild className="hover:bg-neutral-800">
                     <Link to={item.url}>
                       <item.Icon />
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
+
+              {userData.id && (
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    asChild
+                    className="text-white hover:bg-neutral-800"
+                  >
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <CircleUserRoundIcon className="text-neutral-500" />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="bg-neutral-800 text-white">
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+
+                        <DropdownMenuItem asChild>
+                          <Link
+                            className="hover:cursor-pointer"
+                            to="/dashboard"
+                          >
+                            Dashboard
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              )}
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -201,10 +263,31 @@ export default function AppLayout() {
             Skinify
           </Link>
 
-          <div className="flex items-center justify-center gap-4">
-            <Link to="/cart">
-              <ShoppingCartIcon className="size-4" />
-            </Link>
+          <div
+            className={`flex items-center justify-center ${userData.id ? "gap-0" : "gap-4"}`}
+          >
+            <div className="flex items-center justify-center">
+              <Link to="/cart">
+                <ShoppingCartIcon className="size-4" />
+              </Link>
+              {userData.id && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <CircleUserRoundIcon className="text-neutral-200" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-neutral-800 text-white">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem asChild>
+                      <Link className="hover:cursor-pointer" to="/dashboard">
+                        Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
+            </div>
             <Sheet>
               <SheetTrigger asChild>
                 <MenuIcon className="size-4" />
