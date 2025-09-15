@@ -1,8 +1,58 @@
 # Skinify Web
 
-A web application that allows users to customize their phone's or gadget's appearance.
+![header](public/header.png)
 
-A modern, production-ready template for building full-stack React applications using React Router.
+> 📇 **Skinify** - A web application that allows users to customize their phone's or gadget's appearance.
+
+Skinify is an application designed to help users personalize their devices with various skins and themes. Whether you want to give your phone a fresh look or match your gadget to your style, Skinify has got you covered.
+
+## Links
+
+- 🌍 URL: [https://skinify.mchmdirvan.com/](https://skinify.mchmdirvan.com/)
+- 📦 Repository: <https://github.com/mchmdirvan/skinify>
+
+## Features
+
+- ➕ Get Brands
+- ➕ Get Models by Brand
+- ➕ Get Products by Model
+- ➕ Add to Cart
+- ➕ View Cart
+- ➕ Register
+- ➕ Login
+- ➕ Dashboard
+- ➕ Logout
+
+## Tech Stack
+
+- React Router Frmamework V7
+- Tailwind CSS
+- Shadcn UI
+- React Hook Form
+- Zod
+
+## Flowchart
+
+```mermaid
+flowchart TD
+    A[Start] --> B{User Action}
+    B -->|Browse Products| C[View Brands]
+    C --> D[Select Brand]
+    D --> E[View Models]
+    E --> F[Select Model]
+    F --> G[View Products]
+    G --> H[Add to Cart]
+    H --> I{Cart Actions}
+    I -->|View Cart| J[Display Cart Items]
+    I -->|Checkout| K[Add to Cart]
+    K --> L{User Authentication}
+    L -->|Login/Register| M[User Dashboard]
+    Q --> R[End]
+```
+
+## References
+
+Todoist: [https://exacoat.com/](https://exacoat.com/)
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
