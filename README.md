@@ -35,18 +35,57 @@ Skinify is an application designed to help users personalize their devices with 
 
 ```mermaid
 flowchart TD
-    A[Start] --> B{User Action}
-    B -->|Browse Products| C[View Brands]
-    C --> D[Select Brand]
-    D --> E[View Models]
-    E --> F[Select Model]
-    F --> G[View Products]
-    G --> H[Add to Cart]
-    H --> I{Cart Actions}
-    I -->|View Cart| J[Display Cart Items]
-    I -->|Checkout| K[Add to Cart]
-    K --> L{User Authentication}
-    L -->|Login/Register| M[User Dashboard]
+    A[User enters website] --> B[View all brands / Choose brand from navbar]
+
+    B --> C[Select specific brand]
+    C --> D[Choose model from selected brand]
+    D --> E[Choose product from selected model]
+    E --> F[Click 'Add to Cart' button]
+
+    F --> G{User logged in?}
+
+    G -->|Yes| H[Add product to cart]
+    H --> I[Redirect to cart page]
+
+    G -->|No| J[Redirect to login page]
+    J --> K{User has account?}
+
+    K -->|Yes| L[User login]
+    K -->|No| M[Click register]
+    M --> N[User registration]
+    N --> L
+
+    L --> O{Login successful?}
+    O -->|Yes| P[User authenticated]
+    O -->|No| Q[Show login error]
+    Q --> L
+
+    P --> R[Add product to cart]
+    R --> S[Redirect to cart page]
+
+    S --> T[View cart contents]
+
+    %% Cart access control
+    U[User tries to view cart directly] --> V{User logged in?}
+    V -->|Yes| T
+    V -->|No| W[Redirect to login page]
+    W --> L
+
+    %% Logout functionality
+    P --> X[User can logout]
+    X --> Y[User logged out]
+    Y --> B
+
+    %% Styling
+    classDef authProcess fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef productFlow fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef cartFlow fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+
+    class L,M,N,P,X,Y authProcess
+    class B,C,D,E productFlow
+    class F,H,I,R,S,T,U cartFlow
+    class G,K,O,V decision
 ```
 
 ## References
