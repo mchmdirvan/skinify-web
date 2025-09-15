@@ -47,7 +47,6 @@ flowchart TD
     I -->|Checkout| K[Add to Cart]
     K --> L{User Authentication}
     L -->|Login/Register| M[User Dashboard]
-    Q --> R[End]
 ```
 
 ## References
