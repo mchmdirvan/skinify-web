@@ -25,10 +25,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 
   const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/cart`, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
+    headers: { Authorization: `Bearer ${token}` },
   });
   if (!response.ok) {
     session.flash("error", "Failed to get cart");
@@ -43,7 +40,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export default function Cart({ loaderData }: Route.ComponentProps) {
-  const carts = loaderData;
+  const cart = loaderData;
 
   const table = [
     {
@@ -73,16 +70,21 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
             <div></div>
           </CardHeader>
 
-          {carts.items.map((cart) => {
+          {cart.items.map((item) => {
             return (
-              <CardContent key={cart.product.id}>
+              <CardContent key={item.product.id}>
                 <div className="mx-10 my-5 border border-t border-neutral-800"></div>
                 <div className="grid grid-cols-6 items-center">
-                  <img src={cart.product.imageUrl} className="w-[200px]" />
-                  <div>{cart.product.name.split("-")[0]}</div>
-                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
-                  <div>{cart.quantity}</div>
-                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                  <img src={item.product.imageUrl} className="w-[200px]" />
+
+                  <span>{item.product.name.split("-")[0]}</span>
+
+                  <span>Rp {item.product.price.toLocaleString("id-ID")}</span>
+
+                  <span>{item.quantity}</span>
+
+                  <span>Rp {item.product.price.toLocaleString("id-ID")}</span>
+
                   <Button variant="destructive" size="icon" className="">
                     <TrashIcon />
                   </Button>
@@ -94,31 +96,31 @@ export default function Cart({ loaderData }: Route.ComponentProps) {
 
         {/* Mobile */}
         <Card className="lg:hidden">
-          {carts.items.map((cart) => {
+          {cart.items.map((item) => {
             return (
-              <CardContent key={cart.product.id}>
+              <CardContent key={item.product.id}>
                 <div className="flex justify-center border-b border-neutral-800 py-5">
-                  <img src={cart.product.imageUrl} className="w-[200px]" />
+                  <img src={item.product.imageUrl} className="w-[200px]" />
                 </div>
 
                 <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
                   <p className="text-sm">Product</p>
-                  <div>{cart.product.name.split("-")[0]}</div>
+                  <div>{item.product.name.split("-")[0]}</div>
                 </div>
 
                 <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
                   <p className="text-sm">Price</p>
-                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                  <div>Rp {item.product.price.toLocaleString("id-ID")}</div>
                 </div>
 
                 <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
                   <p className="text-sm">Quantity</p>
-                  <div>{cart.quantity}</div>
+                  <div>{item.quantity}</div>
                 </div>
 
                 <div className="grid grid-cols-2 border-b border-neutral-800 py-5 text-sm font-semibold text-nowrap">
                   <p className="text-sm">Subtotal</p>
-                  <div>Rp {cart.product.price.toLocaleString("id-ID")}</div>
+                  <div>Rp {item.product.price.toLocaleString("id-ID")}</div>
                 </div>
 
                 <Button variant="destructive" className="my-4 w-full">
