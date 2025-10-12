@@ -16,7 +16,7 @@ const { getSession, commitSession, destroySession } =
       maxAge: 60 * 60 * 24 * 7, // 7 days
       path: "/",
       sameSite: "lax",
-      secrets: [import.meta.env.VITE_COOKIES_SECRET_KEY],
+      secrets: [String(process.env.COOKIE_SECRET_KEY || "s3cr3t")],
       secure: true,
     },
   });
