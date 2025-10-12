@@ -47,7 +47,6 @@ export async function loader({ request }: Route.LoaderArgs) {
 
 export default function Dashboard({ loaderData }: Route.ComponentProps) {
   const userData = loaderData;
-  console.log(userData);
   return (
     <div className="container mx-auto py-10">
       <h1 className="mb-8 text-3xl font-bold">Dashboard</h1>
