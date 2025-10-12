@@ -23,7 +23,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 
   const token = session.get("token");
 
-  const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/cart`, {
+  const response = await fetch(`${process.env.BACKEND_API_URL}/cart`, {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
   });

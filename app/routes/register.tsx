@@ -28,14 +28,11 @@ export async function action({ request }: Route.ActionArgs) {
     password,
   };
 
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/auth/register`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(registerUserData),
-    },
-  );
+  const response = await fetch(`${process.env.BACKEND_API_URL}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(registerUserData),
+  });
 
   const result = await response.json();
 

@@ -22,7 +22,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
 
 export async function loader({ params }: Route.LoaderArgs) {
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/products/${params.productSlug}`,
+    `${process.env.BACKEND_API_URL}/products/${params.productSlug}`,
   );
   const product: Product = await response.json();
 
@@ -45,17 +45,14 @@ export async function action({ request }: Route.ActionArgs) {
     quantity: Number(formData.get("quantity")),
   };
 
-  const response = await fetch(
-    `${process.env.VITE_BACKEND_API_URL}/cart/items `,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(addCartItemData),
+  const response = await fetch(`${process.env.BACKEND_API_URL}/cart/items `, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-  );
+    body: JSON.stringify(addCartItemData),
+  });
   if (!response.ok) {
     session.flash("error", "Failed to add item to cart");
     return redirect("/login", {

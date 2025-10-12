@@ -26,7 +26,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 
   const token = session.get("token");
 
-  const response = await fetch(`${process.env.VITE_BACKEND_API_URL}/auth/me`, {
+  const response = await fetch(`${process.env.BACKEND_API_URL}/auth/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

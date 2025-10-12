@@ -43,14 +43,11 @@ export async function action({ request }: Route.ActionArgs) {
     password,
   };
 
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/auth/login`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginUserData),
-    },
-  );
+  const response = await fetch(`${process.env.BACKEND_API_URL}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(loginUserData),
+  });
 
   if (!response.ok) {
     session.flash("error", "Invalid username/password");

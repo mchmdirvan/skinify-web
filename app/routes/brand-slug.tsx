@@ -20,7 +20,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
 
 export async function loader({ params }: Route.LoaderArgs) {
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_API_URL}/brands/${params.brandSlug}`,
+    `${process.env.BACKEND_API_URL}/brands/${params.brandSlug}`,
   );
   const models: BrandType = await response.json();
 
