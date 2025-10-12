@@ -77,7 +77,14 @@ export default function ProductSlugRoute({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="grid gap-4 py-10 md:grid-cols-2 lg:px-40">
-      <img src={product.imageUrl} className="lg:max-h-[400px]" />
+      {product.imageUrl !== "" ? (
+        <img src={product.imageUrl} className="lg:max-h-[400px]" />
+      ) : (
+        <div className="flex h-[150px] w-[90px] items-center justify-center border border-white xl:h-[200px] xl:w-[120px]">
+          <p>No Image</p>
+        </div>
+      )}
+
       <Card className="border-none bg-transparent">
         <CardHeader>
           <CardTitle className="font-chakra-petch text-2xl lg:text-5xl">

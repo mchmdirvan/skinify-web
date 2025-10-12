@@ -102,10 +102,17 @@ export default function ModelSlugRoute({ loaderData }: Route.ComponentProps) {
                           }).format(product.price)}
                         </p>
                       </div>
-                      <img
-                        src={product.imageUrl}
-                        className="w-[150px] xl:w-[200px]"
-                      />
+
+                      {product.imageUrl !== "" ? (
+                        <img
+                          src={product.imageUrl}
+                          className="w-[150px] xl:w-[200px]"
+                        />
+                      ) : (
+                        <div className="flex h-[150px] w-[90px] items-center justify-center border border-white xl:h-[200px] xl:w-[120px]">
+                          <p>No Image</p>
+                        </div>
+                      )}
                     </CardHeader>
                   </Card>
                 </Link>
